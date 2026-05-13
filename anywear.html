@@ -6,33 +6,44 @@
 <title>ANYWEAR</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body{background:#f2f2f2;color:#111;overflow-x:hidden;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
 
+body{
+  background:#f3f3f3;
+  color:#111;
+}
+
+/* HEADER */
 .header{
+  height:72px;
   background:#000;
   color:#fff;
-  padding:18px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:0 40px;
 }
 
 .logo{
-  font-size:26px;
+  font-size:24px;
   font-weight:bold;
-  letter-spacing:2px;
+  letter-spacing:1px;
 }
 
 .profile{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
 .profile img{
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   object-fit:cover;
   cursor:pointer;
@@ -43,12 +54,15 @@ body{background:#f2f2f2;color:#111;overflow-x:hidden;}
   cursor:pointer;
 }
 
-.container{display:flex;}
+/* LAYOUT */
+.container{
+  display:flex;
+}
 
 .sidebar{
-  width:220px;
+  width:230px;
   background:#fff;
-  min-height:calc(100vh - 74px);
+  height:calc(100vh - 72px);
   border-right:1px solid #ddd;
   padding:20px;
 }
@@ -58,51 +72,89 @@ body{background:#f2f2f2;color:#111;overflow-x:hidden;}
   border-radius:8px;
   margin-bottom:10px;
   cursor:pointer;
-  transition:0.2s;
+  transition:.2s;
 }
 
-.menu:hover{background:#eee;}
-.menu.active{background:#000;color:#fff;}
+.menu:hover{
+  background:#ececec;
+}
+
+.menu.active{
+  background:#000;
+  color:#fff;
+}
 
 .main{
   flex:1;
   padding:30px;
+  overflow:auto;
 }
 
-.section{display:none;}
-.section.active{display:block;}
-
+/* CARD */
 .card{
   background:#fff;
-  padding:20px;
-  border-radius:14px;
-  margin-bottom:20px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:25px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
+/* SECTION */
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+/* BUTTON */
 .btn{
   background:#000;
   color:#fff;
-  display:inline-block;
-  padding:10px 16px;
+  padding:11px 16px;
   border-radius:8px;
-  cursor:pointer;
+  display:inline-block;
   margin-top:10px;
+  cursor:pointer;
+  border:none;
 }
 
-input,textarea,select{
+.btn:hover{
+  opacity:.9;
+}
+
+/* INPUT */
+input,
+textarea,
+select{
   width:100%;
   padding:10px;
-  margin:6px 0;
-  border:1px solid #ccc;
+  border:1px solid #ddd;
   border-radius:8px;
+  margin-top:8px;
+  margin-bottom:12px;
 }
 
-/* 인벤토리 */
-.filter-row{
+/* CLOSET */
+.top-filter{
   display:flex;
   gap:10px;
   margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.filter-btn{
+  padding:8px 14px;
+  background:#e8e8e8;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.filter-btn.active{
+  background:#000;
+  color:#fff;
 }
 
 .grid{
@@ -112,467 +164,759 @@ input,textarea,select{
 }
 
 .item{
-  background:linear-gradient(145deg,#202020,#3a3a3a);
-  border:2px solid #555;
+  background:#fff;
+  border:2px solid #d8d8d8;
   border-radius:14px;
   overflow:hidden;
-  color:#fff;
   position:relative;
   cursor:pointer;
-  transition:0.2s;
+  transition:.2s;
 }
 
 .item:hover{
   transform:translateY(-3px);
-  border-color:#fff;
+  border-color:#000;
 }
 
 .item img{
   width:100%;
-  height:170px;
+  height:180px;
   object-fit:contain;
-  background:#fff;
+  background:#fafafa;
 }
 
 .item-info{
-  padding:10px;
+  padding:12px;
 }
 
-.favorite-btn{
+.item-title{
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.item-sub{
+  font-size:13px;
+  color:#666;
+}
+
+.favorite{
   position:absolute;
-  top:8px;
-  left:8px;
-  background:#000;
-  color:gold;
-  border:none;
+  top:10px;
+  left:10px;
+  background:#fff;
   border-radius:50%;
   width:28px;
   height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
+  font-size:14px;
 }
 
 .delete-btn{
   position:absolute;
-  top:8px;
-  right:8px;
-  background:red;
+  top:10px;
+  right:10px;
+  background:#000;
   color:#fff;
   border:none;
-  width:28px;
-  height:28px;
+  width:24px;
+  height:24px;
   border-radius:50%;
   cursor:pointer;
 }
 
-/* 프리셋 */
+/* PRESET */
 .preset-list{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
   gap:18px;
 }
 
 .preset-card{
   background:#fff;
-  border-radius:14px;
+  border-radius:18px;
   overflow:hidden;
-  position:relative;
   border:1px solid #ddd;
+  position:relative;
   cursor:pointer;
 }
 
-.preset-card img{
+.preset-cover{
   width:100%;
   height:180px;
   object-fit:cover;
+  background:#f1f1f1;
 }
 
-.preset-content{
-  padding:14px;
+.preset-body{
+  padding:16px;
 }
 
+.preset-name{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.preset-meta{
+  font-size:13px;
+  color:#666;
+  margin-top:6px;
+}
+
+/* SLOT */
 .slot-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
   margin-top:20px;
 }
 
 .slot{
-  background:#f4f4f4;
-  border:2px dashed #aaa;
-  min-height:130px;
-  border-radius:12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:8px;
+  background:#f5f5f5;
+  border:2px dashed #bbb;
+  border-radius:14px;
+  min-height:200px;
+  padding:10px;
+}
+
+.slot h4{
+  margin-bottom:10px;
 }
 
 .slot img{
-  width:70px;
-  height:70px;
+  width:100%;
+  height:140px;
   object-fit:contain;
+  background:#fff;
+  border-radius:10px;
 }
 
-/* 모달 */
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.75);
+  inset:0;
+  background:rgba(0,0,0,.7);
+  z-index:999;
   justify-content:center;
   align-items:center;
-  z-index:999;
+  padding:20px;
+}
+
+.modal.active{
+  display:flex;
 }
 
 .modal-content{
   background:#fff;
-  border-radius:16px;
-  padding:20px;
-  max-width:850px;
-  width:90%;
+  border-radius:20px;
+  padding:24px;
+  max-width:900px;
+  width:100%;
   max-height:90vh;
   overflow:auto;
+  position:relative;
 }
 
-.cloth-layout{
-  display:flex;
-  gap:20px;
+.close{
+  position:absolute;
+  right:15px;
+  top:15px;
+  width:32px;
+  height:32px;
+  border:none;
+  border-radius:50%;
+  background:#000;
+  color:#fff;
+  cursor:pointer;
 }
 
-.modal-left img{
-  width:260px;
-  height:260px;
-  object-fit:contain;
-  background:#f6f6f6;
-  border-radius:12px;
+/* PROFILE */
+#previewImage{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-top:10px;
+  border:3px solid #ddd;
 }
 
-.modal-right{
-  flex:1;
-}
-
-#modalImg{
+.center-profile-image{
   width:250px;
   height:250px;
   object-fit:cover;
-  border-radius:50%;
-  border:4px solid #fff;
+  border-radius:20px;
 }
 
-.preset-items{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
-  gap:14px;
-}
-
-.preset-item{
-  background:#f4f4f4;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
-}
-
-.preset-item img{
-  width:100%;
-  height:100px;
-  object-fit:contain;
-  background:#fff;
+/* SHARE */
+.share-box{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 </style>
 </head>
+
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="logo">ANYWEAR</div>
 
   <div class="profile">
-    <img id="headerProfileImg" src="https://via.placeholder.com/40" onclick="openProfileImage()">
-    <span id="headerName" onclick="openProfileSection()">내 프로필</span>
+    <img
+      id="headerProfileImg"
+      src="https://via.placeholder.com/100"
+      onclick="openProfileImage()"
+    >
+
+    <span id="headerName"
+      onclick="goProfile()">
+      내 프로필
+    </span>
   </div>
 </div>
 
 <div class="container">
 
-<div class="sidebar">
-  <div class="menu active" onclick="showSection('home',this)">홈</div>
-  <div class="menu" onclick="showSection('closet',this)">내 옷장</div>
-  <div class="menu" onclick="showSection('preset',this)">착장 프리셋</div>
-  <div class="menu" onclick="showSection('upload',this)">옷 등록</div>
-  <div class="menu" onclick="showSection('share',this)">공유</div>
-  <div class="menu" onclick="showSection('profile',this)">내 프로필</div>
-</div>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
 
-<div class="main">
-
-<div id="home" class="section active">
-  <div class="card">
-    <h2>오늘의 추천 착장</h2>
-    <p>오늘의 인벤토리 기반 추천 룩</p>
-    <div class="btn">지금 입기</div>
-  </div>
-</div>
-
-<div id="closet" class="section">
-  <div class="card">
-
-    <h2>내 옷장</h2>
-
-    <div class="filter-row">
-      <select id="filterCategory" onchange="renderClothes()">
-        <option value="all">전체 보기</option>
-        <option value="상의">상의</option>
-        <option value="하의">하의</option>
-        <option value="아우터">아우터</option>
-        <option value="신발">신발</option>
-        <option value="악세서리">악세서리</option>
-        <option value="favorite">즐겨찾기</option>
-      </select>
+    <div class="menu active"
+      onclick="showSection('home',this)">
+      홈
     </div>
 
-    <div id="closetGrid" class="grid"></div>
-
-  </div>
-</div>
-
-<div id="preset" class="section">
-  <div class="card">
-
-    <h2>착장 프리셋</h2>
-
-    <input type="text" id="presetName" placeholder="프리셋 이름">
-    <input type="file" id="presetThumbnail">
-
-    <div class="slot-grid">
-      <div class="slot" data-category="상의">상의 슬롯</div>
-      <div class="slot" data-category="하의">하의 슬롯</div>
-      <div class="slot" data-category="아우터">아우터 슬롯</div>
-      <div class="slot" data-category="신발">신발 슬롯</div>
-      <div class="slot" data-category="악세서리">악세서리 슬롯</div>
+    <div class="menu"
+      onclick="showSection('upload',this)">
+      옷 등록
     </div>
 
-    <div class="btn" onclick="openPresetSelector()">옷 선택</div>
-    <div class="btn" onclick="savePreset()">프리셋 저장</div>
-
-    <div id="presetList" class="preset-list"></div>
-
-  </div>
-</div>
-
-<div id="upload" class="section">
-  <div class="card">
-
-    <h2>옷 등록</h2>
-
-    <input type="file" id="clothImage">
-    <img id="clothPreview" style="width:120px;display:none;margin-top:10px;">
-
-    <input type="text" id="clothName" placeholder="옷 이름">
-
-    <select id="clothCategory">
-      <option value="상의">상의</option>
-      <option value="하의">하의</option>
-      <option value="아우터">아우터</option>
-      <option value="신발">신발</option>
-      <option value="악세서리">악세서리</option>
-    </select>
-
-    <input type="text" id="clothBrand" placeholder="브랜드">
-    <input type="text" id="clothSize" placeholder="사이즈">
-    <textarea id="clothDetailSize" placeholder="상세 사이즈"></textarea>
-    <input type="text" id="clothLink" placeholder="브랜드 URL">
-    <textarea id="clothMemo" placeholder="메모"></textarea>
-
-    <div class="btn" onclick="addCloth()">등록하기</div>
-
-  </div>
-</div>
-
-<div id="share" class="section">
-  <div class="card">
-    <h2>공유</h2>
-    <p>추후 구현 예정</p>
-  </div>
-</div>
-
-<div id="profile" class="section">
-  <div class="card">
-
-    <h2>내 프로필</h2>
-
-    <input type="file" id="profileImage">
-
-    <img id="previewImage" src="https://via.placeholder.com/100"
-    style="width:100px;height:100px;border-radius:50%;object-fit:cover;">
-
-    <input type="text" id="name" placeholder="이름">
-    <input type="number" id="age" placeholder="나이">
-    <input type="text" id="feature" placeholder="특징">
-    <textarea id="memo" placeholder="메모"></textarea>
-
-    <div class="btn" onclick="saveProfile()">저장</div>
-
-  </div>
-</div>
-
-</div>
-</div>
-
-<!-- 프로필 이미지 모달 -->
-<div id="imageModal" class="modal" onclick="closeModal('imageModal')">
-  <img id="modalImg">
-</div>
-
-<!-- 옷 정보 모달 -->
-<div id="clothModal" class="modal" onclick="closeModal('clothModal')">
-  <div class="modal-content cloth-layout" onclick="event.stopPropagation()">
-
-    <div class="modal-left">
-      <img id="clothModalImg">
+    <div class="menu"
+      onclick="showSection('closet',this)">
+      내 옷장
     </div>
 
-    <div class="modal-right">
-      <input id="editName">
-      <select id="editCategory">
-        <option value="상의">상의</option>
-        <option value="하의">하의</option>
-        <option value="아우터">아우터</option>
-        <option value="신발">신발</option>
-        <option value="악세서리">악세서리</option>
-      </select>
+    <div class="menu"
+      onclick="showSection('preset',this)">
+      착장 프리셋
+    </div>
 
-      <input id="editBrand">
-      <input id="editSize">
-      <textarea id="editDetailSize"></textarea>
-      <input id="editLink">
-      <textarea id="editMemo"></textarea>
+    <div class="menu"
+      onclick="showSection('share',this)">
+      공유
+    </div>
 
-      <div class="btn" onclick="saveEdit()">수정 저장</div>
-      <div class="btn" onclick="deleteCloth()">삭제</div>
-
+    <div class="menu"
+      onclick="showSection('profile',this)">
+      내 프로필
     </div>
 
   </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- HOME -->
+    <div id="home" class="section active">
+      <div class="card">
+        <h2>오늘의 추천 착장</h2>
+        <br>
+        <p>캐주얼 스트릿 룩</p>
+        <div class="btn">지금 입기</div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="upload" class="section">
+      <div class="card">
+
+        <h2>옷 등록</h2>
+
+        <input type="file" id="clothImage">
+
+        <img
+          id="clothPreview"
+          style="width:100px;margin-top:10px;display:none;border-radius:10px;"
+        >
+
+        <input type="text"
+          id="clothName"
+          placeholder="옷 이름">
+
+        <!-- 카테고리 -->
+        <select id="clothCategory">
+          <option value="상의">상의</option>
+          <option value="하의">하의</option>
+          <option value="아우터">아우터</option>
+          <option value="신발">신발</option>
+          <option value="악세서리">악세서리</option>
+        </select>
+
+        <input type="text"
+          id="clothBrand"
+          placeholder="브랜드">
+
+        <!-- 사이즈 -->
+        <select id="clothSize">
+          <option value="XXS">XXS</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M" selected>M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+          <option value="XXXL">XXXL</option>
+        </select>
+
+        <!-- 상세 사이즈 -->
+        <textarea
+          id="clothDetailSize"
+          placeholder="상세 사이즈">
+        </textarea>
+
+        <input type="text"
+          id="clothLink"
+          placeholder="브랜드 URL">
+
+        <textarea
+          id="clothMemo"
+          placeholder="메모">
+        </textarea>
+
+        <div class="btn"
+          onclick="addCloth()">
+          등록하기
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CLOSET -->
+    <div id="closet" class="section">
+
+      <div class="card">
+
+        <h2>내 옷장</h2>
+
+        <div class="top-filter">
+
+          <div class="filter-btn active"
+            onclick="filterCategory('전체',this)">
+            전체
+          </div>
+
+          <div class="filter-btn"
+            onclick="filterCategory('상의',this)">
+            상의
+          </div>
+
+          <div class="filter-btn"
+            onclick="filterCategory('하의',this)">
+            하의
+          </div>
+
+          <div class="filter-btn"
+            onclick="filterCategory('아우터',this)">
+            아우터
+          </div>
+
+          <div class="filter-btn"
+            onclick="filterCategory('신발',this)">
+            신발
+          </div>
+
+          <div class="filter-btn"
+            onclick="filterCategory('악세서리',this)">
+            악세서리
+          </div>
+
+          <div class="filter-btn"
+            onclick="showFavorites(this)">
+            ★ 즐겨찾기
+          </div>
+
+        </div>
+
+        <div id="closetGrid" class="grid"></div>
+
+      </div>
+    </div>
+
+    <!-- PRESET -->
+    <div id="preset" class="section">
+
+      <div class="card">
+
+        <h2>착장 프리셋</h2>
+
+        <input
+          type="text"
+          id="presetName"
+          placeholder="프리셋 이름">
+
+        <input
+          type="file"
+          id="presetImage">
+
+        <div class="btn"
+          onclick="openPresetBuilder()">
+          프리셋 구성하기
+        </div>
+
+        <div class="preset-list"
+          id="presetList">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SHARE -->
+    <div id="share" class="section">
+      <div class="card">
+
+        <h2>공유</h2>
+
+        <br>
+
+        <div class="share-box">
+          <div class="btn">프리셋 JPG 저장</div>
+          <div class="btn">링크 복사</div>
+          <div class="btn">룩 공유</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="profile" class="section">
+
+      <div class="card">
+
+        <h2>내 프로필</h2>
+
+        <input type="file" id="profileImage">
+
+        <img
+          id="previewImage"
+          src="https://via.placeholder.com/100"
+        >
+
+        <input
+          type="text"
+          id="name"
+          placeholder="이름">
+
+        <input
+          type="number"
+          id="age"
+          placeholder="나이">
+
+        <input
+          type="text"
+          id="feature"
+          placeholder="특징">
+
+        <textarea
+          id="memo"
+          placeholder="메모">
+        </textarea>
+
+        <div class="btn"
+          onclick="saveProfile()">
+          저장
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- 프리셋 선택 모달 -->
-<div id="presetSelectModal" class="modal" onclick="closeModal('presetSelectModal')">
-  <div class="modal-content" onclick="event.stopPropagation()">
+<!-- PROFILE IMAGE MODAL -->
+<div class="modal" id="imageModal">
+
+  <div class="modal-content"
+    style="max-width:320px;text-align:center;">
+
+    <img
+      id="modalImg"
+      class="center-profile-image">
+
+  </div>
+</div>
+
+<!-- CLOTH MODAL -->
+<div class="modal" id="clothModal">
+
+  <div class="modal-content">
+
+    <button class="close"
+      onclick="closeModal('clothModal')">
+      ×
+    </button>
+
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+
+      <div style="flex:1;min-width:250px;">
+        <img
+          id="clothModalImg"
+          style="width:100%;height:320px;object-fit:contain;background:#f5f5f5;border-radius:16px;">
+      </div>
+
+      <div style="flex:1;min-width:250px;">
+
+        <input id="editName">
+
+        <select id="editCategory">
+          <option value="상의">상의</option>
+          <option value="하의">하의</option>
+          <option value="아우터">아우터</option>
+          <option value="신발">신발</option>
+          <option value="악세서리">악세서리</option>
+        </select>
+
+        <input id="editBrand">
+
+        <select id="editSize">
+          <option>XXS</option>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+          <option>XXXL</option>
+        </select>
+
+        <textarea id="editDetailSize"></textarea>
+
+        <input id="editLink">
+
+        <textarea id="editMemo"></textarea>
+
+        <div class="btn"
+          onclick="saveEdit()">
+          저장
+        </div>
+
+        <div class="btn"
+          onclick="deleteCloth()">
+          삭제
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- PRESET BUILDER -->
+<div class="modal" id="presetBuilderModal">
+
+  <div class="modal-content">
+
+    <button class="close"
+      onclick="closeModal('presetBuilderModal')">
+      ×
+    </button>
 
     <h2>프리셋 구성</h2>
-    <div id="presetSelectGrid" class="grid"></div>
+
+    <div class="slot-grid">
+
+      <div class="slot" data-category="상의">
+        <h4>상의</h4>
+        <div class="slot-items"></div>
+      </div>
+
+      <div class="slot" data-category="하의">
+        <h4>하의</h4>
+        <div class="slot-items"></div>
+      </div>
+
+      <div class="slot" data-category="아우터">
+        <h4>아우터</h4>
+        <div class="slot-items"></div>
+      </div>
+
+      <div class="slot" data-category="신발">
+        <h4>신발</h4>
+        <div class="slot-items"></div>
+      </div>
+
+      <div class="slot" data-category="악세서리">
+        <h4>악세서리</h4>
+        <div class="slot-items"></div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div id="builderClothes"
+      class="grid">
+    </div>
+
+    <div class="btn"
+      onclick="savePreset()">
+      프리셋 저장
+    </div>
 
   </div>
 </div>
 
-<!-- 프리셋 상세 -->
-<div id="presetModal" class="modal" onclick="closeModal('presetModal')">
-  <div class="modal-content" onclick="event.stopPropagation()">
+<!-- PRESET MODAL -->
+<div class="modal" id="presetModal">
+
+  <div class="modal-content">
+
+    <button class="close"
+      onclick="closeModal('presetModal')">
+      ×
+    </button>
 
     <h2 id="presetTitle"></h2>
 
-    <img id="presetThumbView"
-    style="width:100%;max-height:250px;object-fit:cover;border-radius:12px;">
+    <br>
 
-    <div id="presetItems" class="preset-items"></div>
-
-    <div class="btn" onclick="deletePreset()">프리셋 삭제</div>
+    <div id="presetItems"
+      class="grid">
+    </div>
 
   </div>
 </div>
 
 <script>
+let selectedIndex=null;
+let currentFilter="전체";
+let favoriteOnly=false;
 
-let selectedIndex = null;
-let selectedPresetIndex = null;
-let presetSlots = {};
+let presetSelection={
+  상의:null,
+  하의:null,
+  아우터:null,
+  신발:null,
+  악세서리:null
+};
 
+/* SECTION */
 function showSection(id,el){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.menu').forEach(m=>m.classList.remove('active'));
+  document.querySelectorAll('.section')
+    .forEach(s=>s.classList.remove('active'));
+
+  document.getElementById(id)
+    .classList.add('active');
+
+  document.querySelectorAll('.menu')
+    .forEach(m=>m.classList.remove('active'));
+
   if(el) el.classList.add('active');
 }
 
-function openProfileSection(){
+/* PROFILE 이동 */
+function goProfile(){
+
   showSection('profile');
+
+  document.querySelectorAll('.menu')
+    .forEach(m=>m.classList.remove('active'));
+
+  document.querySelectorAll('.menu')[5]
+    .classList.add('active');
 }
 
-function closeModal(id){
-  document.getElementById(id).style.display='none';
-}
-
+/* PROFILE IMAGE */
 function openProfileImage(){
-  modalImg.src = headerProfileImg.src;
-  imageModal.style.display='flex';
+
+  modalImg.src=headerProfileImg.src;
+
+  imageModal.classList.add('active');
 }
 
+/* CLOSE MODAL */
+function closeModal(id){
+  document.getElementById(id)
+    .classList.remove('active');
+}
+
+/* OUTSIDE CLICK */
+document.querySelectorAll('.modal')
+.forEach(modal=>{
+
+  modal.addEventListener('click',e=>{
+
+    if(e.target===modal){
+      modal.classList.remove('active');
+    }
+
+  });
+
+});
+
+/* PREVIEW */
 profileImage.onchange=e=>{
-  const file=e.target.files[0];
-  if(!file) return;
 
   const r=new FileReader();
-  r.onload=()=>previewImage.src=r.result;
-  r.readAsDataURL(file);
+
+  r.onload=()=>{
+    previewImage.src=r.result;
+  };
+
+  r.readAsDataURL(e.target.files[0]);
 };
 
 clothImage.onchange=e=>{
-  const file=e.target.files[0];
-  if(!file) return;
 
   const r=new FileReader();
+
   r.onload=()=>{
+
     clothPreview.src=r.result;
     clothPreview.style.display='block';
+
   };
-  r.readAsDataURL(file);
+
+  r.readAsDataURL(e.target.files[0]);
 };
 
+/* SAVE PROFILE */
 function saveProfile(){
 
-  const profile={
+  const profileData={
+
     name:document.getElementById('name').value || '내 프로필',
+
     age:document.getElementById('age').value,
+
     feature:document.getElementById('feature').value,
+
     memo:document.getElementById('memo').value,
+
     image:previewImage.src
+
   };
 
-  localStorage.setItem('profile',JSON.stringify(profile));
+  localStorage.setItem(
+    'profile',
+    JSON.stringify(profileData)
+  );
 
-  headerName.innerText = profile.name;
-  headerProfileImg.src = profile.image;
+  headerName.innerText=profileData.name;
+  headerProfileImg.src=profileData.image;
 
   alert('프로필 저장 완료');
 }
 
-function loadProfile(){
-  const p=JSON.parse(localStorage.getItem('profile'));
-
-  if(!p) return;
-
-  document.getElementById('name').value = p.name || '';
-  document.getElementById('age').value = p.age || '';
-  document.getElementById('feature').value = p.feature || '';
-  document.getElementById('memo').value = p.memo || '';
-
-  if(p.image){
-    previewImage.src = p.image;
-    headerProfileImg.src = p.image;
-  }
-
-  headerName.innerText = p.name || '내 프로필';
-}
-
+/* ADD CLOTH */
 function addCloth(){
 
   const file=clothImage.files[0];
+
   if(!file){
     alert('이미지를 선택하세요');
     return;
@@ -583,112 +927,204 @@ function addCloth(){
   r.onload=()=>{
 
     const cloth={
+
       id:Date.now(),
+
       name:clothName.value,
+
       category:clothCategory.value,
+
       brand:clothBrand.value,
+
       size:clothSize.value,
+
       detailSize:clothDetailSize.value,
+
       link:clothLink.value,
+
       memo:clothMemo.value,
-      image:r.result,
-      favorite:false
+
+      favorite:false,
+
+      image:r.result
+
     };
 
-    let clothes=JSON.parse(localStorage.getItem('clothes')) || [];
+    let clothes=
+      JSON.parse(localStorage.getItem('clothes'))||[];
+
     clothes.push(cloth);
 
-    localStorage.setItem('clothes',JSON.stringify(clothes));
+    localStorage.setItem(
+      'clothes',
+      JSON.stringify(clothes)
+    );
 
     renderClothes();
 
-    alert('옷 등록 완료');
+    alert('등록 완료');
+
   };
 
   r.readAsDataURL(file);
 }
 
+/* FILTER */
+function filterCategory(category,el){
+
+  currentFilter=category;
+  favoriteOnly=false;
+
+  document.querySelectorAll('.filter-btn')
+    .forEach(b=>b.classList.remove('active'));
+
+  el.classList.add('active');
+
+  renderClothes();
+}
+
+function showFavorites(el){
+
+  favoriteOnly=true;
+
+  document.querySelectorAll('.filter-btn')
+    .forEach(b=>b.classList.remove('active'));
+
+  el.classList.add('active');
+
+  renderClothes();
+}
+
+/* RENDER CLOTHES */
 function renderClothes(){
 
   closetGrid.innerHTML='';
 
-  let clothes=JSON.parse(localStorage.getItem('clothes')) || [];
+  let clothes=
+    JSON.parse(localStorage.getItem('clothes'))||[];
 
-  const filter=filterCategory.value;
+  if(currentFilter!=='전체'){
 
-  if(filter==='favorite'){
-    clothes = clothes.filter(c=>c.favorite);
+    clothes=
+      clothes.filter(c=>c.category===currentFilter);
+
   }
-  else if(filter!=='all'){
-    clothes = clothes.filter(c=>c.category===filter);
+
+  if(favoriteOnly){
+
+    clothes=
+      clothes.filter(c=>c.favorite);
+
   }
 
   clothes.forEach((c,i)=>{
 
     const div=document.createElement('div');
+
     div.className='item';
 
     div.innerHTML=`
-      <button class="favorite-btn">${c.favorite ? '★':'☆'}</button>
-      <button class="delete-btn">×</button>
+
+      <div class="favorite">
+        ${c.favorite?'★':'☆'}
+      </div>
+
+      <button class="delete-btn">
+        ×
+      </button>
 
       <img src="${c.image}">
 
       <div class="item-info">
-        <h4>${c.name}</h4>
-        <p>${c.category}</p>
-        <p>${c.brand || ''}</p>
+
+        <div class="item-title">
+          ${c.name}
+        </div>
+
+        <div class="item-sub">
+          ${c.category}
+        </div>
+
       </div>
     `;
 
-    div.onclick=()=>openClothModal(c,i);
+    div.onclick=()=>openCloth(i);
 
-    div.querySelector('.favorite-btn').onclick=(e)=>{
+    div.querySelector('.delete-btn')
+    .onclick=(e)=>{
+
       e.stopPropagation();
 
-      let all=JSON.parse(localStorage.getItem('clothes')) || [];
-      all[i].favorite=!all[i].favorite;
-      localStorage.setItem('clothes',JSON.stringify(all));
+      let clothes=
+        JSON.parse(localStorage.getItem('clothes'))||[];
+
+      clothes.splice(i,1);
+
+      localStorage.setItem(
+        'clothes',
+        JSON.stringify(clothes)
+      );
+
       renderClothes();
     };
 
-    div.querySelector('.delete-btn').onclick=(e)=>{
+    div.querySelector('.favorite')
+    .onclick=(e)=>{
+
       e.stopPropagation();
 
-      let all=JSON.parse(localStorage.getItem('clothes')) || [];
-      all.splice(i,1);
-      localStorage.setItem('clothes',JSON.stringify(all));
+      let clothes=
+        JSON.parse(localStorage.getItem('clothes'))||[];
+
+      clothes[i].favorite=!clothes[i].favorite;
+
+      localStorage.setItem(
+        'clothes',
+        JSON.stringify(clothes)
+      );
 
       renderClothes();
+
     };
 
     closetGrid.appendChild(div);
+
   });
 }
 
-function openClothModal(c,i){
+/* OPEN CLOTH */
+function openCloth(index){
 
-  selectedIndex=i;
+  selectedIndex=index;
 
-  clothModal.style.display='flex';
+  let clothes=
+    JSON.parse(localStorage.getItem('clothes'))||[];
 
-  clothModalImg.src = c.image;
+  let c=clothes[index];
 
-  editName.value = c.name || '';
-  editCategory.value = c.category || '';
-  editBrand.value = c.brand || '';
-  editSize.value = c.size || '';
-  editDetailSize.value = c.detailSize || '';
-  editLink.value = c.link || '';
-  editMemo.value = c.memo || '';
+  clothModalImg.src=c.image;
+
+  editName.value=c.name;
+  editCategory.value=c.category;
+  editBrand.value=c.brand;
+  editSize.value=c.size;
+  editDetailSize.value=c.detailSize;
+  editLink.value=c.link;
+  editMemo.value=c.memo;
+
+  clothModal.classList.add('active');
 }
 
+/* SAVE EDIT */
 function saveEdit(){
 
-  let clothes=JSON.parse(localStorage.getItem('clothes')) || [];
+  let clothes=
+    JSON.parse(localStorage.getItem('clothes'))||[];
 
   clothes[selectedIndex]={
+
     ...clothes[selectedIndex],
+
     name:editName.value,
     category:editCategory.value,
     brand:editBrand.value,
@@ -696,197 +1132,336 @@ function saveEdit(){
     detailSize:editDetailSize.value,
     link:editLink.value,
     memo:editMemo.value
+
   };
 
-  localStorage.setItem('clothes',JSON.stringify(clothes));
+  localStorage.setItem(
+    'clothes',
+    JSON.stringify(clothes)
+  );
+
+  renderClothes();
 
   closeModal('clothModal');
-  renderClothes();
 }
 
+/* DELETE */
 function deleteCloth(){
 
-  let clothes=JSON.parse(localStorage.getItem('clothes')) || [];
+  let clothes=
+    JSON.parse(localStorage.getItem('clothes'))||[];
 
   clothes.splice(selectedIndex,1);
 
-  localStorage.setItem('clothes',JSON.stringify(clothes));
+  localStorage.setItem(
+    'clothes',
+    JSON.stringify(clothes)
+  );
+
+  renderClothes();
 
   closeModal('clothModal');
-  renderClothes();
 }
 
-function openPresetSelector(){
+/* PRESET BUILDER */
+function openPresetBuilder(){
 
-  presetSelectModal.style.display='flex';
-  presetSelectGrid.innerHTML='';
+  presetBuilderModal.classList.add('active');
 
-  const clothes=JSON.parse(localStorage.getItem('clothes')) || [];
+  renderBuilderClothes();
+}
 
-  clothes.forEach((c)=>{
+function renderBuilderClothes(){
+
+  builderClothes.innerHTML='';
+
+  let clothes=
+    JSON.parse(localStorage.getItem('clothes'))||[];
+
+  clothes.forEach(c=>{
 
     const div=document.createElement('div');
+
     div.className='item';
 
     div.innerHTML=`
+
       <img src="${c.image}">
+
       <div class="item-info">
-        <h4>${c.name}</h4>
-        <p>${c.category}</p>
+
+        <div class="item-title">
+          ${c.name}
+        </div>
+
+        <div class="item-sub">
+          ${c.category}
+        </div>
+
       </div>
     `;
 
     div.onclick=()=>{
 
-      presetSlots[c.category]=c;
+      presetSelection[c.category]=c;
 
-      document.querySelectorAll('.slot').forEach(slot=>{
-
-        if(slot.dataset.category===c.category){
-
-          slot.innerHTML=`
-            <img src="${c.image}">
-            <div>${c.name}</div>
-          `;
-        }
-      });
-
-      closeModal('presetSelectModal');
+      renderSlots();
     };
 
-    presetSelectGrid.appendChild(div);
+    builderClothes.appendChild(div);
+
   });
 }
 
+/* SLOT */
+function renderSlots(){
+
+  document.querySelectorAll('.slot')
+  .forEach(slot=>{
+
+    const category=
+      slot.dataset.category;
+
+    const wrap=
+      slot.querySelector('.slot-items');
+
+    wrap.innerHTML='';
+
+    const item=
+      presetSelection[category];
+
+    if(item){
+
+      wrap.innerHTML=`
+        <img src="${item.image}">
+        <p style="margin-top:8px;">
+          ${item.name}
+        </p>
+      `;
+    }
+
+  });
+}
+
+/* SAVE PRESET */
 function savePreset(){
 
-  const presetNameValue = presetName.value;
+  const name=
+    presetName.value.trim();
 
-  if(!presetNameValue){
+  if(!name){
+
     alert('프리셋 이름 입력');
     return;
   }
 
-  const file=presetThumbnail.files[0];
+  const items=
+    Object.values(presetSelection)
+    .filter(v=>v);
 
-  function finalSave(thumbnail){
+  if(items.length===0){
 
-    const preset={
-      name:presetNameValue,
-      thumbnail:thumbnail || 'https://via.placeholder.com/400x250',
-      items:Object.values(presetSlots)
-    };
+    alert('옷을 선택하세요');
+    return;
+  }
 
-    let presets=JSON.parse(localStorage.getItem('presets')) || [];
+  const presetImg=
+    document.getElementById('presetImage').files[0];
 
-    presets.push(preset);
+  function finalSave(imageSrc){
 
-    localStorage.setItem('presets',JSON.stringify(presets));
+    let presets=
+      JSON.parse(localStorage.getItem('presets'))||[];
+
+    presets.push({
+
+      id:Date.now(),
+
+      name:name,
+
+      image:imageSrc ||
+
+      (items[0]?.image),
+
+      items:items
+
+    });
+
+    localStorage.setItem(
+      'presets',
+      JSON.stringify(presets)
+    );
 
     renderPresets();
 
-    presetSlots={};
-
-    document.querySelectorAll('.slot').forEach(slot=>{
-      slot.innerHTML=slot.dataset.category+' 슬롯';
-    });
+    closeModal('presetBuilderModal');
 
     alert('프리셋 저장 완료');
   }
 
-  if(file){
+  if(presetImg){
+
     const r=new FileReader();
-    r.onload=()=>finalSave(r.result);
-    r.readAsDataURL(file);
-  }
-  else{
-    finalSave();
+
+    r.onload=()=>{
+      finalSave(r.result);
+    };
+
+    r.readAsDataURL(presetImg);
+
+  }else{
+
+    finalSave(null);
+
   }
 }
 
+/* RENDER PRESET */
 function renderPresets(){
 
   presetList.innerHTML='';
 
-  const presets=JSON.parse(localStorage.getItem('presets')) || [];
+  let presets=
+    JSON.parse(localStorage.getItem('presets'))||[];
 
   presets.forEach((p,index)=>{
 
     const div=document.createElement('div');
+
     div.className='preset-card';
 
     div.innerHTML=`
-      <button class="delete-btn">×</button>
-      <img src="${p.thumbnail}">
 
-      <div class="preset-content">
-        <h3>${p.name}</h3>
-        <p>${p.items.length}개 장착</p>
+      <button class="delete-btn">
+        ×
+      </button>
+
+      <img
+        class="preset-cover"
+        src="${p.image}">
+
+      <div class="preset-body">
+
+        <div class="preset-name">
+          ${p.name}
+        </div>
+
+        <div class="preset-meta">
+          ${p.items.length}개 아이템
+        </div>
+
       </div>
     `;
 
-    div.onclick=()=>openPresetModal(p,index);
+    div.onclick=()=>openPreset(index);
 
-    div.querySelector('.delete-btn').onclick=(e)=>{
+    div.querySelector('.delete-btn')
+    .onclick=(e)=>{
+
       e.stopPropagation();
 
-      let presets=JSON.parse(localStorage.getItem('presets')) || [];
+      let presets=
+        JSON.parse(localStorage.getItem('presets'))||[];
+
       presets.splice(index,1);
-      localStorage.setItem('presets',JSON.stringify(presets));
+
+      localStorage.setItem(
+        'presets',
+        JSON.stringify(presets)
+      );
 
       renderPresets();
     };
 
     presetList.appendChild(div);
+
   });
 }
 
-function openPresetModal(p,index){
+/* OPEN PRESET */
+function openPreset(index){
 
-  selectedPresetIndex=index;
+  let presets=
+    JSON.parse(localStorage.getItem('presets'))||[];
 
-  presetModal.style.display='flex';
+  let p=presets[index];
 
   presetTitle.innerText=p.name;
-  presetThumbView.src=p.thumbnail;
 
   presetItems.innerHTML='';
 
   p.items.forEach(item=>{
 
     const div=document.createElement('div');
-    div.className='preset-item';
+
+    div.className='item';
 
     div.innerHTML=`
+
       <img src="${item.image}">
-      <h4>${item.name}</h4>
-      <p>${item.category}</p>
-      <p>${item.brand || ''}</p>
-      <p>${item.memo || ''}</p>
+
+      <div class="item-info">
+
+        <div class="item-title">
+          ${item.name}
+        </div>
+
+        <div class="item-sub">
+          ${item.category}
+        </div>
+
+      </div>
     `;
 
+    div.onclick=()=>{
+
+      clothModalImg.src=item.image;
+
+      editName.value=item.name;
+      editCategory.value=item.category;
+      editBrand.value=item.brand;
+      editSize.value=item.size;
+      editDetailSize.value=item.detailSize;
+      editLink.value=item.link;
+      editMemo.value=item.memo;
+
+      clothModal.classList.add('active');
+    };
+
     presetItems.appendChild(div);
+
   });
+
+  presetModal.classList.add('active');
 }
 
-function deletePreset(){
-
-  let presets=JSON.parse(localStorage.getItem('presets')) || [];
-
-  presets.splice(selectedPresetIndex,1);
-
-  localStorage.setItem('presets',JSON.stringify(presets));
-
-  closeModal('presetModal');
-  renderPresets();
-}
-
+/* INIT */
 window.onload=()=>{
-  renderClothes();
-  renderPresets();
-  loadProfile();
-};
 
+  renderClothes();
+
+  renderPresets();
+
+  const p=
+    JSON.parse(localStorage.getItem('profile'));
+
+  if(p){
+
+    headerName.innerText=
+      p.name || '내 프로필';
+
+    headerProfileImg.src=
+      p.image || 'https://via.placeholder.com/100';
+
+    previewImage.src=
+      p.image || 'https://via.placeholder.com/100';
+
+    name.value=p.name || '';
+    age.value=p.age || '';
+    feature.value=p.feature || '';
+    memo.value=p.memo || '';
+  }
+};
 </script>
 
 </body>
