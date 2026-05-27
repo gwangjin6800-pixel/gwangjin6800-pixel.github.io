@@ -1065,9 +1065,12 @@ function goProfile(){
 /* PROFILE IMAGE */
 function openProfileImage(){
 
-  modalImg.src=headerProfileImg.src;
+  document.getElementById('modalImg').src =
+    document.getElementById('headerProfileImg').src;
 
-  imageModal.classList.add('active');
+  document
+    .getElementById('imageModal')
+    .classList.add('active');
 }
 
 /* CLOSE MODAL */
@@ -1230,7 +1233,12 @@ function showFavorites(el){
 /* RENDER CLOTHES */
 function renderClothes(){
 
-  closetGrid.innerHTML='';
+  const closetGrid =
+  document.getElementById(
+    'closetGrid'
+  );
+
+document.getElementById('closetGrid').innerHTML='';
 
   let clothes=
     JSON.parse(localStorage.getItem('clothes'))||[];
@@ -1344,7 +1352,9 @@ function openCloth(index){
   editLink.value=c.link;
   editMemo.value=c.memo;
 
-  clothModal.classList.add('active');
+  document
+  .getElementById('clothModal')
+  .classList.add('active');
 }
 
 /* SAVE EDIT */
@@ -1398,14 +1408,19 @@ function deleteCloth(){
 /* PRESET BUILDER */
 function openPresetBuilder(){
 
-  presetBuilderModal.classList.add('active');
+  document
+    .getElementById('presetBuilderModal')
+    .classList.add('active');
 
   renderBuilderClothes();
 }
 
 function renderBuilderClothes(){
 
-  builderClothes.innerHTML='';
+  const builder =
+    document.getElementById('builderClothes');
+
+  document.getElementById('builderClothes').innerHTML='';
 
   let clothes=
     JSON.parse(localStorage.getItem('clothes'))||[];
@@ -1442,7 +1457,7 @@ function renderBuilderClothes(){
   renderSlots();
 };
 
-    builderClothes.appendChild(div);
+    builder.appendChild(div);
 
   });
 }
@@ -1480,8 +1495,11 @@ function renderSlots(){
 /* SAVE PRESET */
 function savePreset(){
 
-  const name =
-    presetName.value.trim();
+  const presetNameInput =
+  document.getElementById('presetName');
+
+const name =
+  presetNameInput.value.trim();
 
   if(!name){
 
@@ -1554,7 +1572,7 @@ function savePreset(){
 
     renderSlots();
 
-    presetName.value='';
+    presetNameInput.value='';
 
     document.getElementById(
       'presetImage'
@@ -1593,10 +1611,13 @@ function savePreset(){
 /* RENDER PRESET */
 function renderPresets(){
 
+  const presetList =
+    document.getElementById('presetList');
+
   presetList.innerHTML='';
 
-  let presets=
-    JSON.parse(localStorage.getItem('presets'))||[];
+  let presets =
+    JSON.parse(localStorage.getItem('presets')) || [];
 
   presets.forEach((p,index)=>{
 
@@ -1627,15 +1648,17 @@ function renderPresets(){
       </div>
     `;
 
+    /* 프리셋 열기 */
     div.onclick=()=>openPreset(index);
 
+    /* 삭제 버튼 */
     div.querySelector('.delete-btn')
     .onclick=(e)=>{
 
       e.stopPropagation();
 
-      let presets=
-        JSON.parse(localStorage.getItem('presets'))||[];
+      let presets =
+        JSON.parse(localStorage.getItem('presets')) || [];
 
       presets.splice(index,1);
 
@@ -1660,9 +1683,16 @@ function openPreset(index){
 
   let p=presets[index];
 
-  presetTitle.innerText=p.name;
+  document.getElementById(
+  'presetTitle'
+).innerText = p.name;
 
-  presetItems.innerHTML='';
+const presetItems =
+  document.getElementById(
+    'presetItems'
+  );
+
+document.getElementById('presetItems').innerHTML='';
 
   p.items.forEach(item=>{
 
@@ -1699,14 +1729,20 @@ function openPreset(index){
       editLink.value=item.link;
       editMemo.value=item.memo;
 
-      clothModal.classList.add('active');
+      document
+  .getElementById('clothModal')
+  .classList.add('active');
     };
 
-    presetItems.appendChild(div);
+    document
+  .getElementById('presetItems')
+  .appendChild(div);
 
   });
 
-  presetModal.classList.add('active');
+  document
+  .getElementById('presetModal')
+  .classList.add('active');
 }
 
 /* INIT */
