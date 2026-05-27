@@ -356,6 +356,238 @@ select{
   gap:10px;
   flex-wrap:wrap;
 }
+  /* ========================= */
+/* MOBILE ONLY */
+/* PC 디자인 유지 */
+/* ========================= */
+
+@media (max-width:768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* 모바일에서 세로 구조 */
+  .container{
+    flex-direction:column;
+  }
+
+  /* 모바일 전용 상단 메뉴 */
+  .sidebar{
+    width:100%;
+    height:auto;
+
+    display:flex;
+    overflow-x:auto;
+
+    border-right:none;
+    border-bottom:1px solid #ddd;
+
+    padding:12px;
+
+    gap:10px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    background:#fff;
+  }
+
+  .sidebar::-webkit-scrollbar{
+    display:none;
+  }
+
+  /* 모바일 메뉴 버튼 */
+  .menu{
+    margin-bottom:0;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  /* 메인 여백 */
+  .main{
+    padding:14px;
+  }
+
+  /* 모바일 카드 */
+  .card{
+    padding:18px;
+  }
+
+  /* 옷장 모바일 */
+  .grid{
+    grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+    gap:12px;
+  }
+
+  /* 프리셋 */
+  .preset-list{
+    grid-template-columns:1fr;
+  }
+
+  /* 이미지 비율 */
+  .item img{
+    height:140px;
+  }
+
+  /* 버튼 */
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  /* 필터 가로스크롤 */
+  .top-filter{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+  }
+
+  .top-filter::-webkit-scrollbar{
+    display:none;
+  }
+
+  .filter-btn{
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  /* 모달 */
+  .modal-content{
+    width:100%;
+    max-width:100%;
+    padding:18px;
+  }
+
+  html{
+    font-size:13px;
+  }
+
+  body{
+    font-size:13px;
+  }
+
+  .header{
+    height:58px;
+    padding:0 14px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .profile{
+    gap:8px;
+  }
+
+  .profile img{
+    width:32px;
+    height:32px;
+  }
+
+  .profile span{
+    font-size:12px;
+  }
+
+  .main{
+    padding:10px;
+  }
+
+  .card{
+    padding:14px;
+    border-radius:12px;
+  }
+
+  h2{
+    font-size:18px;
+  }
+
+  p{
+    font-size:13px;
+  }
+
+  input,
+  textarea,
+  select{
+    padding:8px;
+    font-size:13px;
+  }
+
+  .btn{
+    width:100%;
+    padding:10px 12px;
+    font-size:13px;
+    border-radius:10px;
+  }
+
+  .menu{
+    font-size:13px;
+    padding:10px 12px;
+  }
+
+  .grid{
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+  }
+
+  .item{
+    border-radius:12px;
+  }
+
+  .item img{
+    height:110px;
+  }
+
+  .item-info{
+    padding:8px;
+  }
+
+  .item-title{
+    font-size:13px;
+  }
+
+  .item-sub{
+    font-size:11px;
+  }
+
+  .preset-cover{
+    height:130px;
+  }
+
+  .preset-name{
+    font-size:15px;
+  }
+
+  .preset-meta{
+    font-size:11px;
+  }
+
+  .slot{
+    min-height:150px;
+    padding:8px;
+  }
+
+  .slot img{
+    height:90px;
+  }
+
+  .modal-content{
+    padding:14px;
+    border-radius:14px;
+  }
+
+  #clothModal .modal-content > div{
+    flex-direction:column;
+  }
+
+  #clothModalImg{
+    height:200px !important;
+  }
+}
 </style>
 </head>
 
@@ -1203,10 +1435,12 @@ function renderBuilderClothes(){
 
     div.onclick=()=>{
 
-      presetSelection[c.category]=c;
+  presetSelection[c.category]={
+    ...c
+  };
 
-      renderSlots();
-    };
+  renderSlots();
+};
 
     builderClothes.appendChild(div);
 
@@ -1246,7 +1480,7 @@ function renderSlots(){
 /* SAVE PRESET */
 function savePreset(){
 
-  const name=
+  const name =
     presetName.value.trim();
 
   if(!name){
@@ -1255,9 +1489,20 @@ function savePreset(){
     return;
   }
 
-  const items=
-    Object.values(presetSelection)
-    .filter(v=>v);
+  const items=[];
+
+  Object.keys(presetSelection)
+  .forEach(key=>{
+
+    if(presetSelection[key]){
+
+      items.push({
+        ...presetSelection[key]
+      });
+
+    }
+
+  });
 
   if(items.length===0){
 
@@ -1265,27 +1510,29 @@ function savePreset(){
     return;
   }
 
-  const presetImg=
+  const presetFile =
     document.getElementById('presetImage').files[0];
 
-  function finalSave(imageSrc){
+  function finishSave(imageSrc){
 
-    let presets=
-      JSON.parse(localStorage.getItem('presets'))||[];
+    let presets =
+      JSON.parse(
+        localStorage.getItem('presets')
+      ) || [];
 
-    presets.push({
+    const presetData={
 
       id:Date.now(),
 
       name:name,
 
-      image:imageSrc ||
+      image:imageSrc || items[0].image,
 
-      (items[0]?.image),
+      items:[...items]
 
-      items:items
+    };
 
-    });
+    presets.push(presetData);
 
     localStorage.setItem(
       'presets',
@@ -1294,26 +1541,53 @@ function savePreset(){
 
     renderPresets();
 
+    /* 초기화 */
+    presetSelection={
+
+      상의:null,
+      하의:null,
+      아우터:null,
+      신발:null,
+      악세서리:null
+
+    };
+
+    renderSlots();
+
+    presetName.value='';
+
+    document.getElementById(
+      'presetImage'
+    ).value='';
+
     closeModal('presetBuilderModal');
 
     alert('프리셋 저장 완료');
   }
 
-  if(presetImg){
+  if(presetFile){
 
-    const r=new FileReader();
+    const reader =
+      new FileReader();
 
-    r.onload=()=>{
-      finalSave(r.result);
+    reader.onload=function(e){
+
+      finishSave(
+        e.target.result
+      );
+
     };
 
-    r.readAsDataURL(presetImg);
+    reader.readAsDataURL(
+      presetFile
+    );
 
   }else{
 
-    finalSave(null);
+    finishSave(null);
 
   }
+
 }
 
 /* RENDER PRESET */
