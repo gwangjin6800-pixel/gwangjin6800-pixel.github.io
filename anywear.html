@@ -890,9 +890,14 @@ function desktopSearchCloset(){
 function homePickCategory(category){
   currentCategory=category;
   favoriteOnly=false;
+
   const items=load('clothes').filter(c=>c.category===category);
+
   if(items.length){
-    openClothById(items[0].id);
+    const randomItem=
+      items[Math.floor(Math.random()*items.length)];
+
+    openClothById(randomItem.id);
   }else{
     go('closet');
     renderClothes();
@@ -944,7 +949,7 @@ function renderNotifications(){
   if(!list)return;
   const items=getNotifications();
   list.innerHTML=items.length
-    ? items.map(n=>`<div class="notification-item ${n.read?'':'unread'}" onclick="readNotification('${n.id}')">
+    ? items.map(n=>`<div class="notification-item ${n.read?'':'unread'}" onclick="readNotification(event,'${n.id}')">
         <div class="notification-icon">${esc(n.icon||'•')}</div>
         <div class="notification-body">
           <div class="notification-title">${esc(n.title||'알림')}</div>
@@ -976,12 +981,30 @@ function closeNotifications(){
   panel.classList.remove('active');
   panel.setAttribute('aria-hidden','true');
 }
-function readNotification(id){
+function readNotification(event,id){
+  /* 알림 항목이 다시 렌더링되더라도 클릭 이벤트가
+     document까지 버블링되어 팝업을 닫지 않게 막음 */
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   const items=getNotifications();
   const item=items.find(n=>String(n.id)===String(id));
-  if(item)item.read=true;
+
+  if(item){
+    item.read=true;
+  }
+
   saveNotifications(items);
   renderNotifications();
+
+  /* 알림 팝업은 열린 상태 유지 */
+  const panel=$('notificationPanel');
+  if(panel){
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden','false');
+  }
 }
 function markAllNotificationsRead(){
   const items=getNotifications().map(n=>({...n,read:true}));
