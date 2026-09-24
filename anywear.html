@@ -6393,6 +6393,50 @@
   }
 }
 
+
+/* =========================================================
+   ANYWEAR MOBILE — CLOSET PLUS MATCH PRESET V10
+   내 옷장의 + 버튼을 프리셋 페이지 + 버튼과 동일한 스타일로 통일
+   ========================================================= */
+@media(max-width:899px){
+
+  #closet .closet-plus{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    min-height:38px;
+    padding:0;
+
+    border:0;
+    border-radius:12px;
+    background:transparent;
+    color:#111;
+
+    display:grid;
+    place-items:center;
+
+    font-size:22px;
+    font-weight:400;
+    line-height:1;
+
+    box-shadow:none;
+    cursor:pointer;
+
+    transition:
+      background .15s ease,
+      transform .15s ease;
+  }
+
+  #closet .closet-plus:hover{
+    background:#eaeaea;
+  }
+
+  #closet .closet-plus:active{
+    background:rgba(17,17,17,.06);
+    transform:scale(.95);
+  }
+}
+
 </style>
 </head>
 <body>
