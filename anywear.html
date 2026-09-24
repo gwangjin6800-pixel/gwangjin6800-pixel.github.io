@@ -5787,6 +5787,565 @@
   }
 }
 
+
+/* =========================================================
+   ANYWEAR MOBILE — ORIGINAL PROFILE TOP + FROSTED NAV V7
+   - 프로필 편집 버튼 위쪽은 사용자 원본 구조 감각으로 복귀
+   - 크기/타이포만 현재 모바일 비율에 맞게 정돈
+   - 하단 플로팅바 아래/뒤 페이지 노출은 블러 그라데이션으로 차단
+   ========================================================= */
+@media(max-width:899px){
+
+  /* -------------------------------------------------------
+     PROFILE TOP
+     원본: 프로필 이미지+이름 → 4개 통계 → 프로필 편집
+     별도 카드/구분선/세로 분할 없이 한 흐름으로 보이게
+     ------------------------------------------------------- */
+  #profile .profile-wrap{
+    margin-top:10px;
+  }
+
+  #profile .profile-head{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:6px 0 17px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+  }
+
+  #profile .profile-avatar{
+    width:78px;
+    height:78px;
+    flex:0 0 78px;
+    border:0;
+    border-radius:50%;
+    object-fit:cover;
+    background:#ddd;
+    box-shadow:none;
+  }
+
+  #profile .profile-name{
+    font-size:18px;
+    line-height:1.15;
+    font-weight:690;
+    letter-spacing:-.025em;
+  }
+
+  #profile .profile-bio{
+    max-width:220px;
+    margin-top:5px;
+    color:#70706b;
+    font-size:10.5px;
+    line-height:1.45;
+    font-weight:400;
+  }
+
+  #profile .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+    margin:0 0 13px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+  }
+
+  #profile .stat{
+    position:static;
+    padding:2px 0;
+  }
+
+  #profile .stat::after{
+    content:none!important;
+    display:none!important;
+  }
+
+  #profile .stat b{
+    display:block;
+    font-size:14px;
+    line-height:1.15;
+    font-weight:680;
+    letter-spacing:-.015em;
+  }
+
+  #profile .stat span{
+    display:block;
+    margin-top:4px;
+    color:#7f7f79;
+    font-size:9px;
+    line-height:1.2;
+    font-weight:400;
+  }
+
+  /* 원본의 단순한 흐름을 유지하되 버튼은 현재 UI 톤에 맞게만 정돈 */
+  #profile .profile-wrap > .secondary.wide{
+    min-height:41px;
+    margin-top:0;
+    border:1px solid rgba(17,17,17,.08);
+    border-radius:11px;
+    background:#ebebe7;
+    color:#222;
+    box-shadow:none;
+    font-size:10.5px;
+    font-weight:600;
+  }
+
+  #profile .profile-wrap > .secondary.wide:active{
+    transform:scale(.99);
+    background:#e3e3df;
+  }
+
+  /* -------------------------------------------------------
+     BOTTOM NAV FROST / FADE
+     플로팅 바 아래 틈에서 페이지가 선명하게 보이지 않도록
+     화면 하단부터 위로 갈수록 자연스럽게 흐려지는 레이어 추가
+     ------------------------------------------------------- */
+  body::after{
+    content:"";
+    position:fixed;
+    z-index:45;
+    left:0;
+    right:0;
+    bottom:0;
+    height:112px;
+    pointer-events:none;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(243,243,240,.98) 0%,
+        rgba(243,243,240,.93) 18%,
+        rgba(243,243,240,.72) 48%,
+        rgba(243,243,240,.28) 76%,
+        rgba(243,243,240,0) 100%
+      );
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    -webkit-mask-image:
+      linear-gradient(
+        to top,
+        #000 0%,
+        #000 42%,
+        rgba(0,0,0,.78) 66%,
+        rgba(0,0,0,0) 100%
+      );
+    mask-image:
+      linear-gradient(
+        to top,
+        #000 0%,
+        #000 42%,
+        rgba(0,0,0,.78) 66%,
+        rgba(0,0,0,0) 100%
+      );
+  }
+
+  .bottom-nav{
+    z-index:50;
+  }
+
+  /* 하단바 자체도 아래쪽 틈과 조금 더 자연스럽게 이어지도록 */
+  .bottom-nav{
+    box-shadow:
+      0 10px 28px rgba(17,17,17,.09),
+      0 16px 24px rgba(243,243,240,.58),
+      inset 0 1px 0 rgba(255,255,255,.84);
+  }
+}
+
+@media(max-width:390px){
+  #profile .profile-wrap{
+    margin-top:8px;
+  }
+
+  #profile .profile-head{
+    gap:13px;
+    margin-bottom:15px;
+  }
+
+  #profile .profile-avatar{
+    width:74px;
+    height:74px;
+    flex-basis:74px;
+  }
+
+  #profile .profile-name{
+    font-size:17px;
+  }
+
+  #profile .profile-bio{
+    font-size:10px;
+  }
+
+  #profile .stat b{
+    font-size:13.5px;
+  }
+
+  #profile .stat span{
+    font-size:8.7px;
+  }
+
+  body::after{
+    height:108px;
+  }
+}
+
+
+/* =========================================================
+   ANYWEAR MOBILE — APP SCALE BALANCE V8
+   목적:
+   - V7의 스타일리쉬한 밀도는 유지
+   - 너무 작아져 웹 축소판처럼 보이던 부분만 확대
+   - 예전처럼 크고 둔해지지 않도록 5~10% 정도만 보정
+   ========================================================= */
+@media(max-width:899px){
+
+  /* ---------- 전체 페이지 밀도 ---------- */
+  body{
+    font-size:13.5px;
+  }
+
+  .page{
+    max-width:540px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:calc(108px + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- 상단바 ---------- */
+  .topbar{
+    height:66px;
+  }
+
+  .page-title{
+    font-size:22px;
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-.035em;
+  }
+
+  .icon-btn{
+    width:38px;
+    height:38px;
+  }
+
+  .top-icon,
+  .settings-icon{
+    width:24px;
+    height:24px;
+  }
+
+  /* ---------- 홈 ---------- */
+  #home .topbar .anywear-wordmark{
+    font-size:20.5px;
+  }
+
+  #home .hero{
+    min-height:290px;
+  }
+
+  #home .hero-kicker{
+    font-size:26.5px;
+  }
+
+  #home .hero-date{
+    font-size:10.8px;
+  }
+
+  #home .hero .primary{
+    min-height:43px;
+    font-size:11.3px;
+  }
+
+  #home .section-head h3{
+    font-size:16.5px;
+  }
+
+  .recent-row{
+    grid-auto-columns:42%;
+  }
+
+  #home #homePresets{
+    grid-auto-columns:80%;
+  }
+
+  /* ---------- 내 옷장 ---------- */
+  #closet .search{
+    min-height:47px;
+  }
+
+  #closet .search input{
+    font-size:12px;
+  }
+
+  #closet .chip{
+    padding:8.5px 13px;
+    font-size:11.2px;
+  }
+
+  #closet .clothes-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px 8px;
+  }
+
+  #closet .cloth-name{
+    font-size:10.8px;
+    line-height:1.25;
+  }
+
+  #closet .cloth-meta{
+    font-size:9px;
+  }
+
+  #closet .fav{
+    width:25px;
+    height:25px;
+  }
+
+  #closet .fav svg{
+    width:12.5px;
+    height:12.5px;
+  }
+
+  #closet .link-import-trigger{
+    height:35px;
+    font-size:9.8px;
+  }
+
+  #closet .closet-plus{
+    width:35px;
+    height:35px;
+  }
+
+  /* ---------- 옷 등록 ---------- */
+  #upload .upload-box{
+    height:232px;
+  }
+
+  #upload .field label{
+    font-size:10.3px;
+  }
+
+  #upload .field input,
+  #upload .field select,
+  #upload .field textarea{
+    min-height:46px;
+    font-size:11.8px;
+  }
+
+  #upload .field textarea{
+    min-height:88px;
+  }
+
+  #upload .primary{
+    min-height:46px;
+    font-size:11.3px;
+  }
+
+  /* ---------- 프리셋 ---------- */
+  #preset .chip{
+    padding:8.5px 13px;
+    font-size:11.2px;
+  }
+
+  #preset .preset-grid{
+    gap:12px;
+  }
+
+  #preset .preset-collage{
+    height:162px;
+  }
+
+  #preset .preset-name{
+    font-size:12.3px;
+  }
+
+  #preset .preset-meta{
+    font-size:9.3px;
+  }
+
+  /* ---------- 공유 ---------- */
+  #share .feed-tabs button{
+    font-size:10.3px;
+    padding:8.5px 12px;
+  }
+
+  #share .feed-user b{
+    font-size:11.4px;
+  }
+
+  #share .feed-collage{
+    height:324px;
+  }
+
+  #share .feed-title{
+    font-size:12.8px;
+  }
+
+  #share .feed-copy{
+    font-size:10.2px;
+  }
+
+  /* ---------- 프로필 ---------- */
+  #profile .profile-wrap{
+    margin-top:10px;
+  }
+
+  #profile .profile-avatar{
+    width:80px;
+    height:80px;
+    flex-basis:80px;
+  }
+
+  #profile .profile-name{
+    font-size:18.5px;
+  }
+
+  #profile .profile-bio{
+    font-size:10.8px;
+  }
+
+  #profile .stat b{
+    font-size:14.3px;
+  }
+
+  #profile .stat span{
+    font-size:9.2px;
+  }
+
+  #profile .profile-wrap > .secondary.wide{
+    min-height:42px;
+    font-size:10.8px;
+  }
+
+  #profile h3[style]{
+    font-size:13.3px;
+  }
+
+  #profile .keyword{
+    font-size:9.3px;
+    padding:6.5px 9.5px;
+  }
+
+  #profile .profile-tabs button{
+    font-size:11.2px;
+    padding:10.5px 2px;
+  }
+
+  /* ---------- 하단바 ----------
+     플로팅 느낌 유지 + 버튼 터치 영역만 앱답게 조금 확대
+     ---------- */
+  .bottom-nav{
+    height:calc(70px + env(safe-area-inset-bottom));
+    left:9px;
+    right:9px;
+    bottom:8px;
+  }
+
+  .nav-btn{
+    min-height:59px;
+    font-size:8.7px;
+  }
+
+  .nav-icon{
+    width:25px;
+    height:25px;
+    flex-basis:25px;
+  }
+
+  .preset-nav-icon{
+    width:29px;
+    height:22px;
+    flex-basis:22px;
+  }
+
+  /* 하단 블러 영역도 바 커진 만큼 자연스럽게 */
+  body::after{
+    height:116px;
+  }
+
+  /* ---------- 모달 / 상세 ----------
+     작은 웹 팝업 느낌 대신 모바일 시트 느낌 유지
+     ---------- */
+  .sheet,
+  .preset-item-detail-sheet{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .sheet-head h2{
+    font-size:18.5px;
+  }
+
+  .close{
+    width:31px;
+    height:31px;
+    min-width:31px;
+    min-height:31px;
+  }
+
+  .primary,
+  .secondary,
+  .danger{
+    min-height:46px;
+    font-size:11.2px;
+  }
+
+  .notification-panel{
+    max-width:400px;
+  }
+}
+
+/* iPhone XS / 375px */
+@media(max-width:390px){
+
+  .page{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  #home .hero{
+    min-height:282px;
+  }
+
+  .recent-row{
+    grid-auto-columns:42.5%;
+  }
+
+  #closet .clothes-grid{
+    gap:13px 7px;
+  }
+
+  #preset .preset-collage{
+    height:156px;
+  }
+
+  #share .feed-collage{
+    height:310px;
+  }
+
+  #profile .profile-avatar{
+    width:76px;
+    height:76px;
+    flex-basis:76px;
+  }
+
+  .bottom-nav{
+    height:calc(69px + env(safe-area-inset-bottom));
+  }
+
+  body::after{
+    height:113px;
+  }
+}
+
 </style>
 </head>
 <body>
