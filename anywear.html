@@ -759,6 +759,160 @@
   }
 }
 
+
+/* LINK IMPORT */
+.closet-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.link-import-trigger{
+  height:38px;
+  padding:0 12px;
+  border:1px solid #dedede;
+  border-radius:999px;
+  background:#fff;
+  color:#111;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:.16s ease;
+}
+.link-import-trigger:hover{
+  background:#f3f3f3;
+  border-color:#d2d2d2;
+}
+.link-import-trigger svg{
+  width:15px;
+  height:15px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.link-import-sheet{
+  max-width:720px;
+}
+.link-import-intro{
+  margin:-2px 0 15px;
+  color:#737373;
+  font-size:12px;
+  line-height:1.55;
+}
+.link-import-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  align-items:end;
+}
+.link-import-load{
+  min-width:108px;
+  height:44px;
+  margin-bottom:0;
+}
+.link-import-status{
+  min-height:18px;
+  margin:2px 0 13px;
+  font-size:11px;
+  color:#777;
+  line-height:1.45;
+}
+.link-import-status.success{color:#19733b}
+.link-import-status.error{color:#c44735}
+.link-import-result{
+  display:none;
+  margin-top:4px;
+}
+.link-import-result.show{
+  display:block;
+}
+.link-import-preview-wrap{
+  position:relative;
+  width:100%;
+  height:230px;
+  border:1px solid #e5e5e5;
+  border-radius:16px;
+  overflow:hidden;
+  background:#f4f4f4;
+  margin-bottom:14px;
+}
+.link-import-preview{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.link-import-no-image{
+  position:absolute;
+  inset:0;
+  display:none;
+  place-items:center;
+  color:#9a9a9a;
+  font-size:12px;
+  font-weight:700;
+}
+.link-import-no-image.show{display:grid}
+.link-import-source{
+  margin-top:7px;
+  font-size:10px;
+  color:#999;
+  word-break:break-all;
+}
+.link-import-help{
+  margin-top:12px;
+  padding:11px 12px;
+  border-radius:12px;
+  background:#f6f6f6;
+  color:#6d6d6d;
+  font-size:10.5px;
+  line-height:1.55;
+}
+.link-import-help b{color:#333}
+
+@media(max-width:899px){
+  .link-import-trigger{
+    height:36px;
+    padding:0 10px;
+    font-size:10.5px;
+    gap:5px;
+  }
+  .link-import-trigger svg{
+    width:14px;
+    height:14px;
+  }
+  .closet-plus{
+    width:36px;
+    height:36px;
+  }
+  .link-import-row{
+    grid-template-columns:1fr;
+  }
+  .link-import-load{
+    width:100%;
+  }
+  .link-import-preview-wrap{
+    height:205px;
+  }
+}
+
+
+.cloth-image-fallback{
+  aspect-ratio:1/1.08;
+  width:100%;
+  background:#ededed;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  pointer-events:none;
+}
+
 </style>
 </head>
 <body>
@@ -818,7 +972,7 @@
   <button class="home-hero-dot" type="button" aria-label="두 번째 이미지"></button>
 </div>
 </div><div class="section-head"><h3>최근 등록한 아이템</h3><button class="text-btn" onclick="go('closet')">더보기 ›</button></div><div id="recentClothes" class="recent-row"></div><div class="section-head"><h3>내 프리셋</h3><button class="text-btn" onclick="go('preset')">더보기 ›</button></div><div id="homePresets" class="preset-grid"></div></section>
-<section id="closet" class="page"><header class="topbar"><h1 class="page-title" style="margin:0">내 옷장</h1><div><button class="icon-btn" onclick="go('upload')">＋</button></div></header><div class="search"><span>⌕</span><input id="closetSearch" placeholder="옷 이름이나 브랜드 검색" oninput="renderClothes()"></div><div class="chips" id="categoryChips"></div><div style="height:14px"></div><div id="closetGrid" class="clothes-grid"></div></section>
+<section id="closet" class="page"><header class="topbar"><h1 class="page-title" style="margin:0">내 옷장</h1><div class="closet-actions"><button class="link-import-trigger" onclick="openLinkImport()" aria-label="링크로 옷 등록"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 13.8 13.8 10.2"></path><path d="M8.1 15.9 6.7 17.3a3.4 3.4 0 0 1-4.8-4.8l3.5-3.5a3.4 3.4 0 0 1 4.8 0"></path><path d="m15.9 8.1 1.4-1.4a3.4 3.4 0 0 1 4.8 4.8L18.6 15a3.4 3.4 0 0 1-4.8 0"></path></svg><span>링크로 등록</span></button><button class="icon-btn closet-plus" onclick="go('upload')" aria-label="직접 옷 등록">＋</button></div></header><div class="search"><span>⌕</span><input id="closetSearch" placeholder="옷 이름이나 브랜드 검색" oninput="renderClothes()"></div><div class="chips" id="categoryChips"></div><div style="height:14px"></div><div id="closetGrid" class="clothes-grid"></div></section>
 <section id="upload" class="page"><header class="topbar"><h1 class="page-title" style="margin:0">옷 등록</h1><button class="close page-close" aria-label="옷 등록 닫기" onclick="closeUploadPage()">×</button></header><div class="upload-layout"><label class="upload-box" for="clothImage"><div id="uploadPlaceholder"><div class="camera">▣</div><b>사진을 업로드하세요</b><p style="font-size:12px;color:#666">이미지는 저장 전 자동으로 최적화됩니다.</p></div><img id="clothPreview" class="hidden" alt="미리보기"></label><input id="clothImage" class="hidden" type="file" accept="image/*"><div class="form"><div class="field"><label>상품명</label><input id="clothName" placeholder="상품명을 입력하세요"></div><div class="field"><label>브랜드</label><input id="clothBrand" placeholder="브랜드명을 입력하세요"></div><div class="two"><div class="field"><label>카테고리</label><select id="clothCategory"><option>상의</option><option>하의</option><option>아우터</option><option>신발</option><option>악세서리</option></select></div><div class="field"><label>사이즈</label><select id="clothSize"><option>XXS</option><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div></div><div class="field"><label>상세 사이즈</label><input id="clothDetailSize" placeholder="예) 총장 70, 가슴 58"></div><div class="field"><label>브랜드 URL</label><input id="clothLink" placeholder="선택 사항"></div><div class="field"><label>메모</label><textarea id="clothMemo" placeholder="메모를 입력하세요"></textarea></div><button class="primary wide" onclick="addCloth()">등록하기</button></div></div></section>
 <section id="preset" class="page"><header class="topbar"><h1 class="page-title" style="margin:0">착장 프리셋</h1><button class="icon-btn" onclick="openBuilder()">＋</button></header><div class="chips" id="presetChips"></div><div style="height:16px"></div><div id="presetList" class="preset-grid"></div></section>
 <section id="share" class="page"><header class="topbar"><h1 class="page-title" style="margin:0">공유</h1><button class="icon-btn" onclick="shareCurrent()">＋</button></header><div class="feed-tabs"><button class="active">전체</button><button>팔로잉</button><button>인기</button></div><div id="feed" class="feed-wrap"></div></section>
@@ -827,6 +981,95 @@
 <nav class="bottom-nav" id="bottomNav"></nav>
 </div>
 <div id="clothModal" class="modal"><div class="sheet"><div class="sheet-head"><h2>옷 상세 정보</h2><button class="close" onclick="closeModal('clothModal')">×</button></div><img id="detailImage" class="detail-img"><div class="form"><div class="field"><label>상품명</label><input id="editName"></div><div class="field"><label>브랜드</label><input id="editBrand"></div><div class="two"><div class="field"><label>카테고리</label><select id="editCategory"><option>상의</option><option>하의</option><option>아우터</option><option>신발</option><option>악세서리</option></select></div><div class="field"><label>사이즈</label><select id="editSize"><option>XXS</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option></select></div></div><div class="field"><label>상세 사이즈</label><input id="editDetailSize"></div><div class="field"><label>브랜드 URL</label><input id="editLink"></div><div class="field"><label>메모</label><textarea id="editMemo"></textarea></div><div class="two"><button class="primary" onclick="saveEdit()">저장</button><button class="secondary" onclick="deleteSelectedCloth()">삭제</button></div></div></div></div>
+
+<div id="linkImportModal" class="modal">
+  <div class="sheet link-import-sheet">
+    <div class="sheet-head">
+      <h2>링크로 옷 등록</h2>
+      <button class="close" onclick="closeModal('linkImportModal')">×</button>
+    </div>
+
+    <p class="link-import-intro">
+      상품 상세 페이지 링크를 넣으면 상품명 · 이미지 · 브랜드 · 카테고리를 자동으로 불러옵니다.
+    </p>
+
+    <div class="link-import-row">
+      <div class="field" style="margin:0">
+        <label>상품 링크</label>
+        <input id="linkImportUrl" type="url" placeholder="https://..." onkeydown="if(event.key==='Enter')fetchProductFromLink()">
+      </div>
+      <button id="linkImportLoadBtn" class="primary link-import-load" type="button" onclick="fetchProductFromLink()">정보 불러오기</button>
+    </div>
+
+    <div id="linkImportStatus" class="link-import-status"></div>
+
+    <div id="linkImportResult" class="link-import-result">
+      <div class="link-import-preview-wrap">
+        <img id="linkImportPreview" class="link-import-preview" alt="상품 이미지 미리보기">
+        <div id="linkImportNoImage" class="link-import-no-image">상품 이미지를 찾지 못했어요</div>
+      </div>
+
+      <div class="form">
+        <div class="field">
+          <label>상품명</label>
+          <input id="linkImportName" placeholder="상품명">
+        </div>
+
+        <div class="field">
+          <label>브랜드</label>
+          <input id="linkImportBrand" placeholder="브랜드">
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label>카테고리</label>
+            <select id="linkImportCategory">
+              <option>상의</option>
+              <option>하의</option>
+              <option>아우터</option>
+              <option>신발</option>
+              <option>악세서리</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>사이즈</label>
+            <select id="linkImportSize">
+              <option>XXS</option>
+              <option>XS</option>
+              <option>S</option>
+              <option selected>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+              <option>XXXL</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>상세 사이즈</label>
+          <input id="linkImportDetailSize" placeholder="선택 사항">
+        </div>
+
+        <div class="field">
+          <label>메모</label>
+          <textarea id="linkImportMemo" placeholder="장바구니에서 가져옴, 구매 완료 상품 등 메모"></textarea>
+        </div>
+
+        <div id="linkImportSource" class="link-import-source"></div>
+
+        <button class="primary wide" type="button" onclick="saveLinkedProduct()">내 옷장에 등록</button>
+      </div>
+    </div>
+
+    <div class="link-import-help">
+      <b>장바구니 / 구매한 상품도 가능해요.</b><br>
+      장바구니나 주문 내역에서 상품을 눌러 <b>상품 상세 페이지 링크</b>를 복사해서 넣으면 됩니다.
+      로그인 후에만 열리는 장바구니·주문내역 자체 URL은 쇼핑몰 보안 때문에 자동 분석이 제한될 수 있어요.
+    </div>
+  </div>
+</div>
+
 <div id="builderModal" class="modal"><div class="sheet"><div class="sheet-head"><h2>프리셋 구성</h2><button class="close" onclick="closeModal('builderModal')">×</button></div><div class="field"><label>프리셋 이름</label><input id="presetName" placeholder="예) 블랙 무드"></div><div class="field"><label>프리셋 키워드</label><input id="presetKeywords" placeholder="예: 데일리, 학교, 미니멀"><small style="display:block;color:#888;margin-top:6px;line-height:1.5">쉼표(,)로 구분해서 입력하세요. 입력한 키워드는 프리셋 상단 필터에 자동으로 추가됩니다.</small></div><div class="builder-slots" id="builderSlots"></div><h3>내 옷에서 선택</h3><div class="chips" id="builderCategoryChips" style="margin:10px 0 14px"></div><div id="builderClothes" class="clothes-grid"></div><div style="height:16px"></div><button class="primary wide" onclick="savePreset()">프리셋 저장하기</button></div></div>
 <div id="presetModal" class="modal"><div class="sheet"><div class="sheet-head"><h2 id="presetTitle"></h2><button class="close" onclick="closeModal('presetModal')">×</button></div><div id="presetItems" class="clothes-grid"></div><div style="height:16px"></div><div class="two"><button class="primary" onclick="toast('오늘의 착장으로 선택했어요')">이 코디 입기</button><button class="secondary" onclick="deleteOpenPreset()">프리셋 삭제</button></div></div></div>
 <div id="profileModal" class="modal"><div class="sheet"><div class="sheet-head"><h2>프로필 편집</h2><button class="close" onclick="closeModal('profileModal')">×</button></div><label class="upload-box" style="height:150px" for="profileImage"><img id="profilePreview" class="profile-avatar" style="width:110px;height:110px" src="data:image/jpeg;base64,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"><span>프로필 사진 변경</span></label><input id="profileImage" class="hidden" type="file" accept="image/*"><div class="profile-photo-actions"><button type="button" class="profile-photo-remove" onclick="removeProfilePhoto()">프로필 사진 지우기</button></div><div class="form"><div class="field"><label>이름</label><input id="name"></div><div class="field"><label>나이</label><input id="age" type="number"></div><div class="field"><label>특징 / 한 줄 소개</label><input id="feature"></div><div class="field"><label>내 스타일 키워드</label><input id="styleKeywords" placeholder="예: 미니멀, 블랙, 스트릿, 편안함"><small style="display:block;color:#888;margin-top:6px;line-height:1.5">쉼표(,)로 구분해서 입력하세요. 최대 10개까지 저장됩니다.</small></div><div class="field"><label>메모</label><textarea id="memo"></textarea></div><button class="primary wide" onclick="saveProfile()">저장</button></div></div></div>
@@ -1019,8 +1262,411 @@ document.addEventListener('click',(e)=>{
 });
 
 function closeModal(id){$(id).classList.remove('active')};document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('active')}));
+let linkImportDraft={url:'',image:'',description:'',source:''};
+
+function openLinkImport(){
+  linkImportDraft={url:'',image:'',description:'',source:''};
+
+  $('linkImportUrl').value='';
+  $('linkImportName').value='';
+  $('linkImportBrand').value='';
+  $('linkImportCategory').value='상의';
+  $('linkImportSize').value='M';
+  $('linkImportDetailSize').value='';
+  $('linkImportMemo').value='';
+  $('linkImportPreview').removeAttribute('src');
+  $('linkImportNoImage').classList.add('show');
+  $('linkImportResult').classList.remove('show');
+  $('linkImportStatus').className='link-import-status';
+  $('linkImportStatus').textContent='';
+  $('linkImportSource').textContent='';
+
+  $('linkImportModal').classList.add('active');
+
+  setTimeout(()=>{
+    $('linkImportUrl')?.focus();
+  },80);
+}
+
+function normalizeProductUrl(raw){
+  let value=String(raw||'').trim();
+  if(!value)throw new Error('상품 링크를 입력해주세요.');
+  if(!/^https?:\/\//i.test(value))value='https://'+value;
+
+  let parsed;
+  try{
+    parsed=new URL(value);
+  }catch{
+    throw new Error('올바른 상품 링크인지 확인해주세요.');
+  }
+
+  if(!/^https?:$/.test(parsed.protocol)){
+    throw new Error('http 또는 https 상품 링크만 사용할 수 있어요.');
+  }
+
+  return parsed.href;
+}
+
+function setLinkImportStatus(message,type=''){
+  const el=$('linkImportStatus');
+  if(!el)return;
+  el.textContent=message||'';
+  el.className='link-import-status'+(type?' '+type:'');
+}
+
+function metaValue(doc,selectors){
+  for(const selector of selectors){
+    const el=doc.querySelector(selector);
+    if(!el)continue;
+    const value=el.getAttribute('content')||el.getAttribute('href')||el.textContent||'';
+    if(String(value).trim())return String(value).trim();
+  }
+  return '';
+}
+
+async function fetchDirectProductMeta(url){
+  const res=await fetch(url,{
+    method:'GET',
+    mode:'cors',
+    credentials:'omit',
+    cache:'no-store'
+  });
+
+  if(!res.ok)throw new Error('direct fetch failed');
+
+  const htmlText=await res.text();
+  const doc=new DOMParser().parseFromString(htmlText,'text/html');
+
+  let title=metaValue(doc,[
+    'meta[property="og:title"]',
+    'meta[name="twitter:title"]',
+    'title'
+  ]);
+
+  let image=metaValue(doc,[
+    'meta[property="og:image"]',
+    'meta[name="twitter:image"]',
+    'meta[name="twitter:image:src"]'
+  ]);
+
+  let description=metaValue(doc,[
+    'meta[property="og:description"]',
+    'meta[name="description"]',
+    'meta[name="twitter:description"]'
+  ]);
+
+  let publisher=metaValue(doc,[
+    'meta[property="og:site_name"]',
+    'meta[name="application-name"]'
+  ]);
+
+  // JSON-LD Product 정보가 있으면 우선 사용
+  const jsonLd=[...doc.querySelectorAll('script[type="application/ld+json"]')];
+  for(const script of jsonLd){
+    try{
+      const parsed=JSON.parse(script.textContent);
+      const nodes=Array.isArray(parsed)?parsed:[parsed];
+      const flat=[];
+      nodes.forEach(node=>{
+        if(node && Array.isArray(node['@graph']))flat.push(...node['@graph']);
+        else flat.push(node);
+      });
+
+      const product=flat.find(node=>{
+        const type=node?.['@type'];
+        return type==='Product'||(Array.isArray(type)&&type.includes('Product'));
+      });
+
+      if(product){
+        title=product.name||title;
+        description=product.description||description;
+
+        if(product.image){
+          image=Array.isArray(product.image)
+            ? (typeof product.image[0]==='string'?product.image[0]:product.image[0]?.url)
+            : (typeof product.image==='string'?product.image:product.image.url);
+        }
+
+        if(product.brand){
+          publisher=typeof product.brand==='string'
+            ? product.brand
+            : (product.brand.name||publisher);
+        }
+        break;
+      }
+    }catch{}
+  }
+
+  return {title,image,description,publisher,source:'상품 페이지'};
+}
+
+async function fetchMicrolinkProductMeta(url){
+  const endpoint='https://api.microlink.io/?url='+encodeURIComponent(url);
+  const res=await fetch(endpoint,{
+    method:'GET',
+    cache:'no-store'
+  });
+
+  if(!res.ok)throw new Error('metadata fetch failed');
+
+  const json=await res.json();
+  if(json.status && json.status!=='success'){
+    throw new Error(json.message||'metadata fetch failed');
+  }
+
+  const data=json.data||{};
+
+  return {
+    title:data.title||'',
+    image:data.image?.url||data.logo?.url||'',
+    description:data.description||'',
+    publisher:data.publisher||data.author||'',
+    source:'링크 메타데이터'
+  };
+}
+
+function titleFromUrl(url){
+  try{
+    const u=new URL(url);
+    const parts=u.pathname
+      .split('/')
+      .filter(Boolean)
+      .map(x=>{
+        try{return decodeURIComponent(x)}catch{return x}
+      })
+      .filter(x=>!/^(\d+|product|products|item|items|detail|goods)$/i.test(x));
+
+    let text=parts.pop()||u.hostname.replace(/^www\./,'').split('.')[0];
+    text=text.replace(/[-_+]+/g,' ').replace(/\s+/g,' ').trim();
+
+    return text || '링크로 등록한 옷';
+  }catch{
+    return '링크로 등록한 옷';
+  }
+}
+
+function cleanProductTitle(title,publisher=''){
+  let value=String(title||'').replace(/\s+/g,' ').trim();
+  if(!value)return '';
+
+  const site=String(publisher||'').trim();
+  if(site){
+    const escSite=site.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    value=value
+      .replace(new RegExp('\\s*[|｜·:]\\s*'+escSite+'\\s*$','i'),'')
+      .replace(new RegExp('\\s*[-–—]\\s*'+escSite+'\\s*$','i'),'');
+  }
+
+  // 쇼핑몰에서 흔히 붙는 뒤쪽 사이트명 최소 정리
+  const pieces=value.split(/\s+[|｜]\s+/);
+  if(pieces.length>1 && pieces[0].length>=3)value=pieces[0];
+
+  return value.trim();
+}
+
+function inferClothingCategory(text){
+  const t=String(text||'').toLowerCase();
+
+  const rules=[
+    ['신발',[
+      '신발','운동화','스니커','스니커즈','구두','로퍼','부츠','샌들','슬리퍼','슈즈',
+      'shoe','shoes','sneaker','sneakers','loafer','boot','boots','sandal','slipper','trainer'
+    ]],
+    ['하의',[
+      '하의','바지','팬츠','청바지','데님','슬랙스','반바지','쇼츠','치마','스커트',
+      'pants','trouser','trousers','jean','jeans','denim','slacks','shorts','skirt'
+    ]],
+    ['아우터',[
+      '아우터','재킷','자켓','점퍼','코트','패딩','블레이저','가디건','후드집업','후드 집업','집업',
+      'jacket','outer','coat','padding','puffer','blazer','cardigan','zip-up','zip up','windbreaker'
+    ]],
+    ['악세서리',[
+      '악세서리','액세서리','모자','캡','비니','가방','백팩','토트백','벨트','안경','선글라스',
+      '목걸이','팔찌','반지','귀걸이','시계','지갑','머플러','스카프',
+      'accessory','accessories','cap','hat','beanie','bag','backpack','tote','belt','glasses',
+      'sunglasses','necklace','bracelet','ring','earring','watch','wallet','scarf'
+    ]],
+    ['상의',[
+      '상의','티셔츠','티셔츠','반팔','긴팔','셔츠','맨투맨','후드티','후디','니트','스웨터','블라우스','탑',
+      't-shirt','tshirt','tee','shirt','sweatshirt','hoodie','knit','sweater','blouse','top'
+    ]]
+  ];
+
+  for(const [category,words] of rules){
+    if(words.some(word=>t.includes(word)))return category;
+  }
+
+  return '상의';
+}
+
+function inferBrand(meta,url){
+  let brand=String(meta.publisher||'').trim();
+
+  const genericSites=[
+    'musinsa','무신사','naver','네이버','shopping','store','shop','mall',
+    'coupang','쿠팡','29cm','w concept','wconcept','ssf','lotte','롯데','gmarket','옥션'
+  ];
+
+  if(brand && !genericSites.some(x=>brand.toLowerCase().includes(x))){
+    return brand;
+  }
+
+  try{
+    const host=new URL(url).hostname.replace(/^www\./,'');
+    const first=host.split('.')[0]||'';
+    if(first && !genericSites.some(x=>first.toLowerCase().includes(x))){
+      return first.toUpperCase();
+    }
+  }catch{}
+
+  return brand||'';
+}
+
+function showLinkImportResult(meta,url){
+  const fallbackName=titleFromUrl(url);
+  const name=cleanProductTitle(meta.title,meta.publisher)||fallbackName;
+  const combined=[name,meta.description,url].filter(Boolean).join(' ');
+  const category=inferClothingCategory(combined);
+  const brand=inferBrand(meta,url);
+  const image=String(meta.image||'').trim();
+
+  linkImportDraft={
+    url,
+    image,
+    description:meta.description||'',
+    source:meta.source||''
+  };
+
+  $('linkImportName').value=name;
+  $('linkImportBrand').value=brand;
+  $('linkImportCategory').value=category;
+
+  const preview=$('linkImportPreview');
+  const noImage=$('linkImportNoImage');
+
+  if(image){
+    preview.src=image;
+    preview.style.display='block';
+    noImage.classList.remove('show');
+
+    preview.onerror=()=>{
+      preview.style.display='none';
+      noImage.classList.add('show');
+      linkImportDraft.image='';
+    };
+  }else{
+    preview.removeAttribute('src');
+    preview.style.display='none';
+    noImage.classList.add('show');
+  }
+
+  $('linkImportSource').textContent=`원본 링크: ${url}`;
+  $('linkImportResult').classList.add('show');
+}
+
+async function fetchProductFromLink(){
+  const btn=$('linkImportLoadBtn');
+  let url;
+
+  try{
+    url=normalizeProductUrl($('linkImportUrl').value);
+  }catch(err){
+    setLinkImportStatus(err.message,'error');
+    return;
+  }
+
+  $('linkImportUrl').value=url;
+  $('linkImportResult').classList.remove('show');
+  setLinkImportStatus('상품 정보를 확인하고 있어요…');
+
+  if(btn){
+    btn.disabled=true;
+    btn.textContent='불러오는 중…';
+  }
+
+  let meta=null;
+  let usedFallback=false;
+
+  try{
+    try{
+      meta=await fetchDirectProductMeta(url);
+    }catch{
+      meta=await fetchMicrolinkProductMeta(url);
+    }
+
+    if(!meta?.title && !meta?.image){
+      throw new Error('상품 정보를 찾지 못했습니다.');
+    }
+
+    showLinkImportResult(meta,url);
+    setLinkImportStatus('상품 정보를 불러왔어요. 내용 확인 후 등록해주세요.','success');
+  }catch(err){
+    usedFallback=true;
+
+    const fallback={
+      title:titleFromUrl(url),
+      image:'',
+      description:'',
+      publisher:'',
+      source:'URL 기본 분석'
+    };
+
+    showLinkImportResult(fallback,url);
+    setLinkImportStatus(
+      '이 링크는 자동 분석이 제한됐어요. 상품 상세 페이지 링크인지 확인하고, 아래 정보를 보완해서 등록할 수 있어요.',
+      'error'
+    );
+  }finally{
+    if(btn){
+      btn.disabled=false;
+      btn.textContent='정보 불러오기';
+    }
+  }
+
+  return !usedFallback;
+}
+
+function saveLinkedProduct(){
+  let url;
+  try{
+    url=normalizeProductUrl($('linkImportUrl').value);
+  }catch(err){
+    return toast(err.message);
+  }
+
+  const name=$('linkImportName').value.trim();
+  if(!name)return toast('상품명을 확인해주세요');
+
+  const cloth={
+    id:Date.now(),
+    name,
+    brand:$('linkImportBrand').value.trim(),
+    category:$('linkImportCategory').value,
+    size:$('linkImportSize').value,
+    detailSize:$('linkImportDetailSize').value.trim(),
+    link:url,
+    memo:$('linkImportMemo').value.trim(),
+    favorite:false,
+    image:linkImportDraft.image||''
+  };
+
+  let clothes=load('clothes');
+  clothes.unshift(cloth);
+
+  try{
+    save('clothes',clothes);
+  }catch{
+    return toast('저장 공간이 부족합니다');
+  }
+
+  closeModal('linkImportModal');
+  refreshAll();
+  toast('링크에서 옷을 등록했습니다');
+  pushNotification('링크 등록 완료',`${cloth.name}이(가) 내 옷장에 추가됐어요.`,'↗');
+}
+
 function compressFile(file,max=1200,q=.78){return new Promise((resolve,reject)=>{const r=new FileReader();r.onerror=reject;r.onload=()=>{const im=new Image();im.onload=()=>{let w=im.width,h=im.height,s=Math.min(1,max/Math.max(w,h));const c=document.createElement('canvas');c.width=Math.round(w*s);c.height=Math.round(h*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',q))};im.onerror=reject;im.src=r.result};r.readAsDataURL(file)})}
-function clothCard(c,click=true){return `<article class="cloth-card" ${click?`onclick="openClothById('${c.id}')"`:''}><button class="fav ${c.favorite?'active':''}" aria-label="${c.favorite?'즐겨찾기 해제':'즐겨찾기 추가'}" onclick="event.stopPropagation();toggleFavorite('${c.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="fav-star" d="M12 3.6l2.58 5.23 5.77.84-4.18 4.07.99 5.75L12 16.78 6.84 19.5l.99-5.75-4.18-4.07 5.77-.84L12 3.6z"/></svg></button><img class="cloth-image" src="${c.image||''}" alt=""><div class="cloth-name">${esc(c.name||'이름 없는 옷')}</div><p class="cloth-meta">${esc(c.category||'')}</p></article>`}
+function clothCard(c,click=true){return `<article class="cloth-card" ${click?`onclick="openClothById('${c.id}')"`:''}><button class="fav ${c.favorite?'active':''}" aria-label="${c.favorite?'즐겨찾기 해제':'즐겨찾기 추가'}" onclick="event.stopPropagation();toggleFavorite('${c.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="fav-star" d="M12 3.6l2.58 5.23 5.77.84-4.18 4.07.99 5.75L12 16.78 6.84 19.5l.99-5.75-4.18-4.07 5.77-.84L12 3.6z"/></svg></button><div class="cloth-image cloth-image-fallback">${c.image?`<img src="${c.image}" alt="" style="width:100%;height:100%;object-fit:contain;display:block">`:`<span style="font-size:11px;color:#aaa">NO IMAGE</span>`}</div><div class="cloth-name">${esc(c.name||'이름 없는 옷')}</div><p class="cloth-meta">${esc(c.category||'')}</p></article>`}
 function renderCategoryChips(){const cats=['전체','상의','하의','아우터','신발','악세서리'];$('categoryChips').innerHTML=cats.map(c=>`<button class="chip ${!favoriteOnly&&currentCategory===c?'active':''}" onclick="currentCategory='${c}';favoriteOnly=false;renderClothes()">${c}</button>`).join('')+`<button class="chip ${favoriteOnly?'active':''}" onclick="favoriteOnly=true;renderClothes()">★ 즐겨찾기</button>`}
 function renderClothes(){renderCategoryChips();let a=load('clothes');const q=($('closetSearch')?.value||'').trim().toLowerCase();if(currentCategory!=='전체')a=a.filter(c=>c.category===currentCategory);if(favoriteOnly)a=a.filter(c=>c.favorite);if(q)a=a.filter(c=>(c.name+' '+c.brand).toLowerCase().includes(q));$('closetGrid').innerHTML=a.length?a.map(c=>clothCard(c)).join(''):`<div class="empty" style="grid-column:1/-1">아직 표시할 옷이 없어요.</div>`}
 function toggleFavorite(id){let a=load('clothes'),i=a.findIndex(c=>String(c.id)===String(id));if(i<0)return;a[i].favorite=!a[i].favorite;save('clothes',a);refreshAll()}
