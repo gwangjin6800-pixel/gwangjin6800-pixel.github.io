@@ -6346,6 +6346,53 @@
   }
 }
 
+
+/* =========================================================
+   ANYWEAR MOBILE — CLOSET DETAIL CLOSE V9
+   옷장 상세창 X를 프리셋 쪽의 가벼운 닫기 느낌으로 정리
+   검정 원 배경 제거
+   ========================================================= */
+@media(max-width:899px){
+
+  #clothModal .sheet-head .close{
+    width:30px;
+    height:30px;
+    min-width:30px;
+    min-height:30px;
+    padding:0;
+
+    border:0;
+    border-radius:50%;
+    background:transparent;
+    color:#555;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:Arial,sans-serif;
+    font-size:22px;
+    font-weight:400;
+    line-height:1;
+
+    box-shadow:none;
+    transition:
+      background .15s ease,
+      color .15s ease,
+      transform .15s ease;
+  }
+
+  #clothModal .sheet-head .close:hover{
+    background:#ecece8;
+    color:#111;
+  }
+
+  #clothModal .sheet-head .close:active{
+    transform:scale(.92);
+    background:#e4e4e0;
+  }
+}
+
 </style>
 </head>
 <body>
