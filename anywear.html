@@ -609,13 +609,32 @@
   font-size:17px;
   font-weight:850;
 }
-.notification-read-all{
+.notification-head-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
+}
+.notification-read-all,
+.notification-clear-read{
   border:0;
   background:transparent;
   color:#777;
-  font-size:11px;
-  font-weight:700;
+  padding:6px 7px;
+  border-radius:8px;
+  font-size:10.5px;
+  font-weight:750;
+  white-space:nowrap;
   cursor:pointer;
+  transition:background .16s ease,color .16s ease;
+}
+.notification-read-all:hover,
+.notification-clear-read:hover{
+  background:#f2f2f2;
+  color:#111;
+}
+.notification-clear-read{
+  color:#8a8a8a;
 }
 .notification-list{
   max-height:390px;
@@ -626,7 +645,7 @@
   position:relative;
   display:flex;
   gap:11px;
-  padding:12px 11px;
+  padding:12px 38px 12px 11px;
   border-radius:13px;
   cursor:pointer;
 }
@@ -661,11 +680,39 @@
   color:#999;
 }
 .notification-dot{
+  position:absolute;
+  right:14px;
+  bottom:13px;
   width:7px;
   height:7px;
   border-radius:50%;
   background:#111;
-  margin-top:5px;
+}
+.notification-delete{
+  position:absolute;
+  top:9px;
+  right:8px;
+  width:24px;
+  height:24px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:#aaa;
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  font-weight:400;
+  line-height:1;
+  cursor:pointer;
+  transition:background .16s ease,color .16s ease,transform .16s ease;
+}
+.notification-delete:hover{
+  background:#ececec;
+  color:#111;
+}
+.notification-delete:active{
+  transform:scale(.92);
 }
 .notification-empty{
   padding:38px 16px;
@@ -1460,6 +1507,25 @@
   .shared-item-link{grid-column:1/-1;text-align:center}
 }
 
+
+@media(max-width:480px){
+  .notification-head{
+    gap:6px;
+    padding:14px 12px 11px;
+  }
+  .notification-head h3{
+    font-size:16px;
+  }
+  .notification-head-actions{
+    gap:1px;
+  }
+  .notification-read-all,
+  .notification-clear-read{
+    padding:5px 5px;
+    font-size:9.5px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1739,7 +1805,24 @@
 <div id="notificationPanel" class="notification-panel" aria-hidden="true">
   <div class="notification-head">
     <h3>알림</h3>
-    <button class="notification-read-all" onclick="markAllNotificationsRead()">모두 읽음</button>
+
+    <div class="notification-head-actions">
+      <button
+        class="notification-clear-read"
+        type="button"
+        onclick="clearReadNotifications(event)"
+      >
+        읽은 알림 지우기
+      </button>
+
+      <button
+        class="notification-read-all"
+        type="button"
+        onclick="markAllNotificationsRead(event)"
+      >
+        모두 읽음
+      </button>
+    </div>
   </div>
   <div id="notificationList" class="notification-list"></div>
 </div>
@@ -1858,11 +1941,21 @@ function renderNotifications(){
   list.innerHTML=items.length
     ? items.map(n=>`<div class="notification-item ${n.read?'':'unread'}" onclick="readNotification(event,'${n.id}')">
         <div class="notification-icon">${esc(n.icon||'•')}</div>
+
         <div class="notification-body">
           <div class="notification-title">${esc(n.title||'알림')}</div>
           <div class="notification-text">${esc(n.text||'')}</div>
           <div class="notification-time">${notificationTime(n.time)}</div>
         </div>
+
+        <button
+          class="notification-delete"
+          type="button"
+          aria-label="알림 지우기"
+          title="알림 지우기"
+          onclick="deleteNotification(event,'${n.id}')"
+        >×</button>
+
         ${n.read?'':'<span class="notification-dot"></span>'}
       </div>`).join('')
     : `<div class="notification-empty">아직 새로운 알림이 없어요.</div>`;
@@ -1913,10 +2006,71 @@ function readNotification(event,id){
     panel.setAttribute('aria-hidden','false');
   }
 }
-function markAllNotificationsRead(){
+function deleteNotification(event,id){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  const items=getNotifications().filter(
+    n=>String(n.id)!==String(id)
+  );
+
+  saveNotifications(items);
+  renderNotifications();
+
+  /* 하나를 지워도 알림 창은 닫히지 않음 */
+  const panel=$('notificationPanel');
+  if(panel){
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden','false');
+  }
+}
+
+function clearReadNotifications(event){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  const items=getNotifications();
+  const readCount=items.filter(n=>n.read).length;
+
+  if(readCount===0){
+    toast('지울 읽은 알림이 없어요');
+    return;
+  }
+
+  const remaining=items.filter(n=>!n.read);
+
+  saveNotifications(remaining);
+  renderNotifications();
+
+  const panel=$('notificationPanel');
+  if(panel){
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden','false');
+  }
+
+  toast(`읽은 알림 ${readCount}개를 지웠어요`);
+}
+
+function markAllNotificationsRead(event){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   const items=getNotifications().map(n=>({...n,read:true}));
   saveNotifications(items);
   renderNotifications();
+
+  /* 모두 읽음 후에도 팝업 유지 */
+  const panel=$('notificationPanel');
+  if(panel){
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden','false');
+  }
 }
 document.addEventListener('click',(e)=>{
   const panel=$('notificationPanel');
