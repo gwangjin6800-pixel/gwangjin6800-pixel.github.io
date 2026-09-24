@@ -929,6 +929,537 @@
   .upload-header-actions{gap:6px}
 }
 
+
+
+/* PRESET DETAIL / EDIT / SHARE */
+.preset-detail-sheet{
+  max-width:900px;
+  padding:20px 16px 24px;
+}
+.preset-detail-head{
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:12px;
+}
+.preset-detail-heading{
+  min-width:0;
+  flex:1;
+}
+.preset-detail-eyebrow,
+.preset-item-eyebrow{
+  display:block;
+  margin-bottom:5px;
+  color:#989898;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.preset-detail-heading h2{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:22px;
+  letter-spacing:-.04em;
+}
+.preset-head-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:7px;
+  flex:0 0 auto;
+}
+.preset-link-button{
+  height:31px;
+  padding:0 11px;
+  border:1px solid #dedede;
+  border-radius:999px;
+  background:#fff;
+  color:#111;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  font-size:10.5px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:.17s ease;
+}
+.preset-link-button:hover{
+  background:#f4f4f4;
+  border-color:#d2d2d2;
+}
+.preset-link-button:active{transform:scale(.97)}
+.preset-link-button svg,
+.preset-wear-button svg,
+.preset-action-button svg,
+.preset-item-product-link svg{
+  width:15px;
+  height:15px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.preset-overview{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 0 17px;
+  margin-bottom:4px;
+  border-top:1px solid #efefef;
+  border-bottom:1px solid #efefef;
+}
+.preset-overview-count{
+  color:#444;
+  font-size:12px;
+  font-weight:800;
+}
+.preset-overview-keywords{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:7px;
+}
+.preset-overview-keyword{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#f2f2f2;
+  color:#575757;
+  font-size:9.5px;
+  font-weight:750;
+}
+.preset-overview-help{
+  max-width:250px;
+  margin:0;
+  color:#969696;
+  font-size:10px;
+  line-height:1.45;
+  text-align:right;
+}
+.preset-item-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  padding:16px 0 18px;
+}
+.preset-item-card{
+  min-width:0;
+  border:0;
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+}
+.preset-item-card-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1.05;
+  overflow:hidden;
+  border-radius:15px;
+  background:#efefef;
+  border:1px solid #e8e8e8;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.preset-item-card-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+}
+.preset-item-card-no-image{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:#aaa;
+  font-size:10px;
+  font-weight:800;
+}
+.preset-item-card-category{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(17,17,17,.88);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+.preset-item-card-copy{
+  padding:8px 2px 0;
+}
+.preset-item-card-name{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#111;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:-.025em;
+}
+.preset-item-card-brand{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  margin-top:3px;
+  color:#898989;
+  font-size:9.5px;
+}
+.preset-detail-footer{
+  display:grid;
+  gap:8px;
+  padding-top:16px;
+  border-top:1px solid #ececec;
+}
+.preset-wear-button{
+  width:100%;
+  min-height:45px;
+  padding:0 15px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:12px;
+  font-weight:850;
+  cursor:pointer;
+  transition:.16s ease;
+}
+.preset-wear-button:hover{background:#222}
+.preset-wear-button:active{transform:scale(.99)}
+.preset-manage-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.preset-action-button{
+  min-height:41px;
+  padding:0 12px;
+  border:1px solid #dedede;
+  border-radius:11px;
+  background:#fff;
+  color:#303030;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.16s ease;
+}
+.preset-action-button:hover{
+  background:#f4f4f4;
+  border-color:#d2d2d2;
+}
+.preset-action-button:active{transform:scale(.985)}
+.preset-delete-button{
+  color:#aa423b;
+  border-color:#ecd8d6;
+  background:#fffafa;
+}
+.preset-delete-button:hover{
+  color:#91362f;
+  border-color:#e5c4c1;
+  background:#fff4f3;
+}
+
+/* PRESET ITEM READ-ONLY DETAIL */
+.preset-item-modal{
+  z-index:145;
+  background:rgba(0,0,0,.56);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.preset-item-detail-sheet{
+  max-width:760px;
+  padding:19px 16px 25px;
+  box-shadow:0 -18px 45px rgba(0,0,0,.12);
+}
+.preset-item-detail-head{
+  margin-bottom:13px;
+}
+.preset-item-detail-head h2{
+  margin:0;
+  font-size:19px;
+  letter-spacing:-.035em;
+}
+.preset-item-detail-layout{
+  display:grid;
+  gap:16px;
+}
+.preset-item-detail-visual{
+  position:relative;
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  border-radius:18px;
+  background:#efefef;
+  border:1px solid #e7e7e7;
+}
+.preset-item-detail-visual img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.preset-item-detail-no-image{
+  position:absolute;
+  inset:0;
+  display:none;
+  place-items:center;
+  color:#a0a0a0;
+  font-size:11px;
+  font-weight:800;
+}
+.preset-item-detail-no-image.show{display:grid}
+.preset-item-detail-content{
+  min-width:0;
+}
+.preset-item-detail-title-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:24px;
+}
+.preset-item-category-pill{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#111;
+  color:#fff;
+  font-size:9px;
+  font-weight:850;
+}
+.preset-item-favorite-label{
+  color:#888;
+  font-size:9.5px;
+  font-weight:700;
+}
+.preset-item-detail-name{
+  margin:10px 0 4px;
+  color:#111;
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-.045em;
+  line-height:1.15;
+}
+.preset-item-detail-brand{
+  margin:0 0 18px;
+  color:#777;
+  font-size:11px;
+  font-weight:650;
+}
+.preset-item-information-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.preset-item-info-box{
+  min-width:0;
+  padding:12px;
+  border-radius:12px;
+  background:#f5f5f5;
+}
+.preset-item-info-box span,
+.preset-item-note>span{
+  display:block;
+  margin-bottom:5px;
+  color:#999;
+  font-size:9px;
+  font-weight:800;
+}
+.preset-item-info-box strong{
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#222;
+  font-size:11px;
+  font-weight:800;
+}
+.preset-item-note{
+  margin-top:8px;
+  padding:12px;
+  border:1px solid #ececec;
+  border-radius:12px;
+  background:#fff;
+}
+.preset-item-note p{
+  margin:0;
+  color:#555;
+  font-size:10.5px;
+  line-height:1.6;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.preset-item-product-link{
+  width:100%;
+  min-height:43px;
+  margin-top:12px;
+  padding:0 13px;
+  border-radius:11px;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:850;
+}
+.preset-item-product-link.hidden{
+  display:none;
+}
+
+@media(min-width:650px){
+  .preset-item-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .preset-item-detail-layout{
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    align-items:start;
+  }
+  .preset-item-detail-visual{
+    height:410px;
+  }
+}
+
+@media(min-width:900px){
+  .preset-detail-sheet{
+    max-width:940px;
+    padding:26px;
+  }
+  .preset-detail-heading h2{font-size:27px}
+  .preset-item-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+    padding:20px 0 22px;
+  }
+  .preset-item-card:hover .preset-item-card-image{
+    transform:translateY(-3px);
+    border-color:#d9d9d9;
+    box-shadow:0 12px 28px rgba(0,0,0,.07);
+  }
+  .preset-detail-footer{
+    grid-template-columns:minmax(0,1.4fr) minmax(260px,.8fr);
+    align-items:center;
+  }
+  .preset-item-detail-sheet{
+    max-width:820px;
+    padding:26px;
+    border-radius:18px;
+  }
+  .preset-item-detail-name{font-size:28px}
+}
+.shared-preset-sheet{max-width:760px}
+.shared-preset-author{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:3px 0 15px;
+  border-bottom:1px solid #ececec;
+  margin-bottom:15px;
+}
+.shared-preset-author img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#e7e7e7;
+}
+.shared-preset-author b{display:block;font-size:14px}
+.shared-preset-author span{display:block;margin-top:3px;font-size:11px;color:#777}
+.shared-preset-collage{
+  width:100%;
+  min-height:260px;
+  max-height:420px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+  padding:7px;
+  border-radius:16px;
+  background:#efefef;
+  overflow:hidden;
+}
+.shared-preset-collage .shared-collage-cell{
+  min-height:125px;
+  display:grid;
+  place-items:center;
+  background:#f8f8f8;
+  border-radius:11px;
+  overflow:hidden;
+}
+.shared-preset-collage img{
+  width:100%;
+  height:100%;
+  min-height:125px;
+  object-fit:contain;
+  display:block;
+}
+.shared-preset-collage .shared-no-image{
+  color:#aaa;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.03em;
+}
+.shared-preset-heading{margin:17px 0 5px;font-size:22px;font-weight:850}
+.shared-preset-count{font-size:12px;color:#777}
+.shared-preset-keywords{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 4px}
+.shared-preset-keyword{padding:7px 10px;border-radius:999px;background:#ececec;font-size:11px;font-weight:750}
+.shared-items-title{font-size:15px;margin:22px 0 10px}
+.shared-item-list{display:grid;gap:9px}
+.shared-item{
+  display:grid;
+  grid-template-columns:72px minmax(0,1fr) auto;
+  gap:11px;
+  align-items:center;
+  padding:9px;
+  border:1px solid #e9e9e9;
+  border-radius:13px;
+  background:#fff;
+}
+.shared-item-media{
+  width:72px;
+  height:78px;
+  border-radius:10px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#f0f0f0;
+}
+.shared-item-media img{width:100%;height:100%;object-fit:contain;display:block}
+.shared-item-media span{font-size:9px;color:#aaa;font-weight:800}
+.shared-item-name{font-size:13px;font-weight:850;line-height:1.35}
+.shared-item-meta{margin-top:4px;font-size:10.5px;color:#777;line-height:1.45}
+.shared-item-detail{margin-top:4px;font-size:10px;color:#999;line-height:1.4}
+.shared-item-link{
+  border:1px solid #dedede;
+  background:#fff;
+  color:#111;
+  border-radius:999px;
+  padding:8px 10px;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.shared-item-link:hover{background:#f2f2f2}
+.shared-preset-footer{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.share-link-hint{margin:11px 0 0;font-size:10px;line-height:1.5;color:#8b8b8b;text-align:center}
+@media(max-width:520px){
+  .shared-preset-collage{min-height:220px}
+  .shared-item{grid-template-columns:62px minmax(0,1fr);}
+  .shared-item-media{width:62px;height:68px}
+  .shared-item-link{grid-column:1/-1;text-align:center}
+}
+
 </style>
 </head>
 <body>
@@ -1086,9 +1617,124 @@
   </div>
 </div>
 
-<div id="builderModal" class="modal"><div class="sheet"><div class="sheet-head"><h2>프리셋 구성</h2><button class="close" onclick="closeModal('builderModal')">×</button></div><div class="field"><label>프리셋 이름</label><input id="presetName" placeholder="예) 블랙 무드"></div><div class="field"><label>프리셋 키워드</label><input id="presetKeywords" placeholder="예: 데일리, 학교, 미니멀"><small style="display:block;color:#888;margin-top:6px;line-height:1.5">쉼표(,)로 구분해서 입력하세요. 입력한 키워드는 프리셋 상단 필터에 자동으로 추가됩니다.</small></div><div class="builder-slots" id="builderSlots"></div><h3>내 옷에서 선택</h3><div class="chips" id="builderCategoryChips" style="margin:10px 0 14px"></div><div id="builderClothes" class="clothes-grid"></div><div style="height:16px"></div><button class="primary wide" onclick="savePreset()">프리셋 저장하기</button></div></div>
-<div id="presetModal" class="modal"><div class="sheet"><div class="sheet-head"><h2 id="presetTitle"></h2><button class="close" onclick="closeModal('presetModal')">×</button></div><div id="presetItems" class="clothes-grid"></div><div style="height:16px"></div><div class="two"><button class="primary" onclick="toast('오늘의 착장으로 선택했어요')">이 코디 입기</button><button class="secondary" onclick="deleteOpenPreset()">프리셋 삭제</button></div></div></div>
+<div id="builderModal" class="modal"><div class="sheet"><div class="sheet-head"><h2 id="builderTitle">프리셋 구성</h2><button class="close" onclick="closeModal('builderModal')">×</button></div><div class="field"><label>프리셋 이름</label><input id="presetName" placeholder="예) 블랙 무드"></div><div class="field"><label>프리셋 키워드</label><input id="presetKeywords" placeholder="예: 데일리, 학교, 미니멀"><small style="display:block;color:#888;margin-top:6px;line-height:1.5">쉼표(,)로 구분해서 입력하세요. 입력한 키워드는 프리셋 상단 필터에 자동으로 추가됩니다.</small></div><div class="builder-slots" id="builderSlots"></div><h3>내 옷에서 선택</h3><div class="chips" id="builderCategoryChips" style="margin:10px 0 14px"></div><div id="builderClothes" class="clothes-grid"></div><div style="height:16px"></div><button id="presetSaveButton" class="primary wide" onclick="savePreset()">프리셋 저장하기</button></div></div>
+
+<div id="presetModal" class="modal">
+  <div class="sheet preset-detail-sheet">
+    <div class="sheet-head preset-detail-head">
+      <div class="preset-detail-heading">
+        <span class="preset-detail-eyebrow">SAVED LOOK</span>
+        <h2 id="presetTitle"></h2>
+      </div>
+
+      <div class="preset-head-actions">
+        <button class="preset-link-button" type="button" onclick="shareOpenPreset()" aria-label="프리셋 공유 링크 만들기">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.2 13.8 13.8 10.2"></path>
+            <path d="M8.1 15.9 6.7 17.3a3.4 3.4 0 0 1-4.8-4.8l3.5-3.5a3.4 3.4 0 0 1 4.8 0"></path>
+            <path d="m15.9 8.1 1.4-1.4a3.4 3.4 0 0 1 4.8 4.8L18.6 15a3.4 3.4 0 0 1-4.8 0"></path>
+          </svg>
+          <span>링크 만들기</span>
+        </button>
+
+        <button class="close" onclick="closeModal('presetModal')" aria-label="프리셋 닫기">×</button>
+      </div>
+    </div>
+
+    <div class="preset-overview">
+      <div>
+        <div id="presetMetaLine" class="preset-overview-count"></div>
+        <div id="presetKeywordList" class="preset-overview-keywords"></div>
+      </div>
+      <p class="preset-overview-help">아이템을 누르면 프리셋을 닫지 않고 상세 정보를 볼 수 있어요.</p>
+    </div>
+
+    <div id="presetItems" class="preset-item-grid"></div>
+
+    <div class="preset-detail-footer">
+      <button class="preset-wear-button" type="button" onclick="toast('오늘의 착장으로 선택했어요')">
+        <span>이 코디 입기</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m14 7 5 5-5 5"></path></svg>
+      </button>
+
+      <div class="preset-manage-actions">
+        <button class="preset-action-button" type="button" onclick="editOpenPreset()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"></path></svg>
+          <span>수정하기</span>
+        </button>
+
+        <button class="preset-action-button preset-delete-button" type="button" onclick="deleteOpenPreset()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+          <span>삭제</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="presetItemModal" class="modal preset-item-modal">
+  <div class="sheet preset-item-detail-sheet">
+    <div class="sheet-head preset-item-detail-head">
+      <div>
+        <span class="preset-item-eyebrow">ITEM DETAILS</span>
+        <h2>아이템 정보</h2>
+      </div>
+      <button class="close" onclick="closeModal('presetItemModal')" aria-label="아이템 상세 닫기">×</button>
+    </div>
+
+    <div class="preset-item-detail-layout">
+      <div class="preset-item-detail-visual">
+        <img id="presetItemDetailImage" alt="">
+        <div id="presetItemDetailNoImage" class="preset-item-detail-no-image">NO IMAGE</div>
+      </div>
+
+      <div class="preset-item-detail-content">
+        <div class="preset-item-detail-title-row">
+          <span id="presetItemDetailCategory" class="preset-item-category-pill"></span>
+          <span id="presetItemDetailFavorite" class="preset-item-favorite-label"></span>
+        </div>
+
+        <h2 id="presetItemDetailName" class="preset-item-detail-name"></h2>
+        <p id="presetItemDetailBrand" class="preset-item-detail-brand"></p>
+
+        <div class="preset-item-information-grid">
+          <div class="preset-item-info-box">
+            <span>사이즈</span>
+            <strong id="presetItemDetailSize">-</strong>
+          </div>
+          <div class="preset-item-info-box">
+            <span>상세 사이즈</span>
+            <strong id="presetItemDetailDetailSize">-</strong>
+          </div>
+        </div>
+
+        <div id="presetItemMemoWrap" class="preset-item-note">
+          <span>메모</span>
+          <p id="presetItemDetailMemo"></p>
+        </div>
+
+        <a id="presetItemDetailLink" class="preset-item-product-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span>상품 페이지 보기</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="profileModal" class="modal"><div class="sheet"><div class="sheet-head"><h2>프로필 편집</h2><button class="close" onclick="closeModal('profileModal')">×</button></div><label class="upload-box" style="height:150px" for="profileImage"><img id="profilePreview" class="profile-avatar" style="width:110px;height:110px" src="data:image/jpeg;base64,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"><span>프로필 사진 변경</span></label><input id="profileImage" class="hidden" type="file" accept="image/*"><div class="profile-photo-actions"><button type="button" class="profile-photo-remove" onclick="removeProfilePhoto()">프로필 사진 지우기</button></div><div class="form"><div class="field"><label>이름</label><input id="name"></div><div class="field"><label>나이</label><input id="age" type="number"></div><div class="field"><label>특징 / 한 줄 소개</label><input id="feature"></div><div class="field"><label>내 스타일 키워드</label><input id="styleKeywords" placeholder="예: 미니멀, 블랙, 스트릿, 편안함"><small style="display:block;color:#888;margin-top:6px;line-height:1.5">쉼표(,)로 구분해서 입력하세요. 최대 10개까지 저장됩니다.</small></div><div class="field"><label>메모</label><textarea id="memo"></textarea></div><button class="primary wide" onclick="saveProfile()">저장</button></div></div></div>
+
+
+<div id="sharedPresetModal" class="modal">
+  <div class="sheet shared-preset-sheet">
+    <div class="sheet-head">
+      <h2>공유된 코디</h2>
+      <button class="close" onclick="closeSharedPreset()">×</button>
+    </div>
+    <div id="sharedPresetContent"></div>
+  </div>
+</div>
 
 <div id="notificationPanel" class="notification-panel" aria-hidden="true">
   <div class="notification-head">
@@ -1104,6 +1750,8 @@ const NAV=[['home','홈'],['upload','등록'],['closet','옷장'],['preset','프
 let current='home',selectedClothId=null,openPresetIndex=null,currentCategory='전체',favoriteOnly=false,activePresetKeyword='전체';
 let presetSelection={상의:null,하의:null,아우터:null,신발:null,악세서리:null};
 let builderCategory='전체';
+let editingPresetId=null;
+let activeSharedPresetUrl='';
 const DEFAULT_PROFILE_IMAGE='data:image/jpeg;base64,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';
 const $=id=>document.getElementById(id); const load=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}; const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 function esc(v=''){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -1694,15 +2342,178 @@ function deleteSelectedCloth(){if(!confirm('이 옷을 삭제할까요?'))return
 function getPresetClothes(p){const clothes=load('clothes');return (p.items||[]).map(x=>{if(typeof x==='object'&&x)return clothes.find(c=>String(c.id)===String(x.id))||x;return clothes.find(c=>String(c.id)===String(x))}).filter(Boolean)}
 function collage(items){let arr=items.slice(0,4);return arr.length?arr.map(c=>`<img src="${c.image}" alt="">`).join(''):`<div class="empty" style="grid-column:1/-1;padding:20px">이미지 없음</div>`}
 function normalizePresetKeywords(x){return Array.isArray(x.keywords)?x.keywords.map(k=>String(k).trim().replace(/^#+/,'')).filter(Boolean):[]}
+function presetDetailClothCard(c){
+  const brand=String(c.brand||'').trim();
+  return `<button class="preset-item-card" type="button" onclick="openPresetItemDetail('${c.id}')">
+    <div class="preset-item-card-image">
+      ${c.image
+        ? `<img src="${c.image}" alt="${esc(c.name||'프리셋 아이템')}">`
+        : `<div class="preset-item-card-no-image">NO IMAGE</div>`}
+      <span class="preset-item-card-category">${esc(c.category||'아이템')}</span>
+    </div>
+    <div class="preset-item-card-copy">
+      <div class="preset-item-card-name">${esc(c.name||'이름 없는 옷')}</div>
+      <div class="preset-item-card-brand">${brand?esc(brand):'브랜드 정보 없음'}</div>
+    </div>
+  </button>`;
+}
+
+function getOpenPresetItemById(id){
+  if(openPresetIndex===null)return null;
+  const preset=load('presets')[openPresetIndex];
+  if(!preset)return null;
+  return getPresetClothes(preset).find(c=>String(c.id)===String(id))||null;
+}
+
+function openPresetItemDetail(id){
+  const c=getOpenPresetItemById(id);
+  if(!c)return toast('아이템 정보를 찾지 못했습니다');
+
+  const image=$('presetItemDetailImage');
+  const noImage=$('presetItemDetailNoImage');
+
+  if(c.image){
+    image.src=c.image;
+    image.style.display='block';
+    noImage.classList.remove('show');
+    image.onerror=()=>{
+      image.style.display='none';
+      noImage.classList.add('show');
+    };
+  }else{
+    image.removeAttribute('src');
+    image.style.display='none';
+    noImage.classList.add('show');
+  }
+
+  $('presetItemDetailCategory').textContent=c.category||'아이템';
+  $('presetItemDetailFavorite').textContent=c.favorite?'★ 즐겨찾기':'';
+  $('presetItemDetailName').textContent=c.name||'이름 없는 옷';
+  $('presetItemDetailBrand').textContent=c.brand||'브랜드 정보 없음';
+  $('presetItemDetailSize').textContent=c.size||'-';
+  $('presetItemDetailDetailSize').textContent=c.detailSize||'-';
+
+  const memo=String(c.memo||'').trim();
+  $('presetItemDetailMemo').textContent=memo||'등록된 메모가 없습니다.';
+  $('presetItemMemoWrap').classList.toggle('empty-note',!memo);
+
+  const link=String(c.link||'').trim();
+  const linkEl=$('presetItemDetailLink');
+  if(link){
+    let href=link;
+    if(!/^https?:\/\//i.test(href))href='https://'+href;
+    linkEl.href=href;
+    linkEl.classList.remove('hidden');
+  }else{
+    linkEl.removeAttribute('href');
+    linkEl.classList.add('hidden');
+  }
+
+  /* presetModal은 닫지 않고 그 위에 상세창만 표시 */
+  $('presetItemModal').classList.add('active');
+}
+
 function setPresetKeyword(keyword){activePresetKeyword=keyword;renderPresets()}
 function renderPresetChips(presets){let keywords=[];presets.forEach(x=>normalizePresetKeywords(x).forEach(k=>{if(!keywords.includes(k))keywords.push(k)}));if(activePresetKeyword!=='전체'&&!keywords.includes(activePresetKeyword))activePresetKeyword='전체';$('presetChips').innerHTML=[`<button class="chip ${activePresetKeyword==='전체'?'active':''}" onclick="setPresetKeyword('전체')">전체</button>`,...keywords.map(k=>{const encoded=encodeURIComponent(k);return `<button class="chip ${activePresetKeyword===k?'active':''}" onclick="setPresetKeyword(decodeURIComponent('${encoded}'))">#${esc(k)}</button>`})].join('')}
 function renderPresets(){let all=load('presets');renderPresetChips(all);let indexed=all.map((x,i)=>({x,i}));if(activePresetKeyword!=='전체')indexed=indexed.filter(({x})=>normalizePresetKeywords(x).includes(activePresetKeyword));$('presetList').innerHTML=indexed.length?indexed.map(({x,i})=>{let items=getPresetClothes(x),keys=normalizePresetKeywords(x);return `<article class="preset-card" onclick="openPreset(${i})"><div class="preset-collage">${x.image?`<img src="${x.image}" style="grid-column:1/-1">`:collage(items)}</div><div class="preset-name">${esc(x.name)}</div><div class="preset-meta">${items.length}개의 아이템${keys.length?' · '+keys.map(k=>'#'+esc(k)).join(' '):''}</div><button class="more">⋯</button></article>`}).join(''):(all.length?`<div class="empty" style="grid-column:1/-1">#${esc(activePresetKeyword)} 키워드의 프리셋이 없어요.</div>`:`<div class="empty" style="grid-column:1/-1">저장된 프리셋이 없어요.<br><br><button class="primary" onclick="openBuilder()">첫 프리셋 만들기</button></div>`)}
-function openBuilder(){presetSelection={상의:null,하의:null,아우터:null,신발:null,악세서리:null};builderCategory='전체';$('presetName').value='';$('presetKeywords').value='';renderBuilder();$('builderModal').classList.add('active')}
+function openBuilder(){
+  editingPresetId=null;
+  presetSelection={상의:null,하의:null,아우터:null,신발:null,악세서리:null};
+  builderCategory='전체';
+  $('presetName').value='';
+  $('presetKeywords').value='';
+  if($('builderTitle'))$('builderTitle').textContent='프리셋 구성';
+  if($('presetSaveButton'))$('presetSaveButton').textContent='프리셋 저장하기';
+  renderBuilder();
+  $('builderModal').classList.add('active');
+}
+function editOpenPreset(){
+  if(openPresetIndex===null)return;
+  const presets=load('presets');
+  const p=presets[openPresetIndex];
+  if(!p)return;
+
+  editingPresetId=p.id;
+  presetSelection={상의:null,하의:null,아우터:null,신발:null,악세서리:null};
+  getPresetClothes(p).forEach(c=>{
+    if(c&&Object.prototype.hasOwnProperty.call(presetSelection,c.category)){
+      presetSelection[c.category]=c.id;
+    }
+  });
+
+  builderCategory='전체';
+  $('presetName').value=p.name||'';
+  $('presetKeywords').value=normalizePresetKeywords(p).join(', ');
+  if($('builderTitle'))$('builderTitle').textContent='프리셋 수정';
+  if($('presetSaveButton'))$('presetSaveButton').textContent='수정 내용 저장하기';
+
+  closeModal('presetItemModal');
+  closeModal('presetModal');
+  renderBuilder();
+  $('builderModal').classList.add('active');
+}
 function setBuilderCategory(cat){builderCategory=cat;renderBuilder()}
-function renderBuilder(){const clothes=load('clothes');$('builderSlots').innerHTML=Object.keys(presetSelection).map(cat=>{let c=clothes.find(x=>String(x.id)===String(presetSelection[cat]));return `<div class="slot"><b>${cat}</b>${c?`<img src="${c.image}"><span>${esc(c.name)}</span>`:'<div style="height:70px;display:grid;place-items:center">＋</div>'}</div>`}).join('');const cats=['전체','상의','하의','아우터','신발','악세서리'];$('builderCategoryChips').innerHTML=cats.map(cat=>`<button class="chip ${builderCategory===cat?'active':''}" onclick="setBuilderCategory('${cat}')">${cat}</button>`).join('');const visible=builderCategory==='전체'?clothes:clothes.filter(c=>c.category===builderCategory);$('builderClothes').innerHTML=visible.length?visible.map(c=>`<article class="cloth-card" onclick="presetSelection['${c.category}']='${c.id}';renderBuilder()"><img class="cloth-image" src="${c.image}"><div class="cloth-name">${esc(c.name)}</div><p class="cloth-meta">${esc(c.category)}</p></article>`).join(''):(clothes.length?`<div class="empty" style="grid-column:1/-1">${esc(builderCategory)} 카테고리에 등록된 옷이 없어요.</div>`:`<div class="empty" style="grid-column:1/-1">먼저 옷을 등록해주세요.</div>`)}
-function savePreset(){let name=$('presetName').value.trim();if(!name)return toast('프리셋 이름을 입력해주세요');let ids=Object.values(presetSelection).filter(Boolean);if(!ids.length)return toast('옷을 하나 이상 선택해주세요');let keywords=$('presetKeywords').value.split(',').map(x=>x.trim().replace(/^#+/,'')).filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).slice(0,10);let p=load('presets');p.unshift({id:Date.now(),name,image:null,items:ids,keywords});try{save('presets',p)}catch{return toast('저장 공간이 부족합니다')}activePresetKeyword='전체';closeModal('builderModal');refreshAll();toast('프리셋을 저장했습니다');pushNotification('프리셋 저장 완료',`${name} 프리셋이 저장됐어요.`,'✦')}
-function openPreset(i){let p=load('presets')[i];if(!p)return;openPresetIndex=i;$('presetTitle').textContent=p.name;$('presetItems').innerHTML=getPresetClothes(p).map(c=>clothCard(c)).join('');$('presetModal').classList.add('active')}
-function deleteOpenPreset(){if(openPresetIndex===null)return;if(!confirm('이 프리셋을 삭제할까요?'))return;let p=load('presets');p.splice(openPresetIndex,1);save('presets',p);closeModal('presetModal');refreshAll();toast('프리셋을 삭제했습니다')}
+function renderBuilder(){const clothes=load('clothes');$('builderSlots').innerHTML=Object.keys(presetSelection).map(cat=>{let c=clothes.find(x=>String(x.id)===String(presetSelection[cat]));return `<div class="slot"><b>${cat}</b>${c?`<img src="${c.image}"><span>${esc(c.name)}</span>`:'<div style="height:70px;display:grid;place-items:center">＋</div>'}</div>`}).join('');const cats=['전체','상의','하의','아우터','신발','악세서리'];$('builderCategoryChips').innerHTML=cats.map(cat=>`<button class="chip ${builderCategory===cat?'active':''}" onclick="setBuilderCategory('${cat}')">${cat}</button>`).join('');const visible=builderCategory==='전체'?clothes:clothes.filter(c=>c.category===builderCategory);$('builderClothes').innerHTML=visible.length?visible.map(c=>{const selected=String(presetSelection[c.category])===String(c.id);return `<article class="cloth-card" onclick="presetSelection['${c.category}']='${c.id}';renderBuilder()" style="${selected?'outline:2px solid #111;outline-offset:2px;border-radius:13px':''}"><img class="cloth-image" src="${c.image}"><div class="cloth-name">${esc(c.name)}</div><p class="cloth-meta">${esc(c.category)}${selected?' · 선택됨':''}</p></article>`}).join(''):(clothes.length?`<div class="empty" style="grid-column:1/-1">${esc(builderCategory)} 카테고리에 등록된 옷이 없어요.</div>`:`<div class="empty" style="grid-column:1/-1">먼저 옷을 등록해주세요.</div>`)}
+function savePreset(){
+  let name=$('presetName').value.trim();
+  if(!name)return toast('프리셋 이름을 입력해주세요');
+
+  let ids=Object.values(presetSelection).filter(Boolean);
+  if(!ids.length)return toast('옷을 하나 이상 선택해주세요');
+
+  let keywords=$('presetKeywords').value.split(',').map(x=>x.trim().replace(/^#+/,'')).filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).slice(0,10);
+  let p=load('presets');
+  const isEditing=editingPresetId!==null;
+
+  if(isEditing){
+    const index=p.findIndex(x=>String(x.id)===String(editingPresetId));
+    if(index<0){
+      editingPresetId=null;
+      return toast('수정할 프리셋을 찾지 못했습니다');
+    }
+    p[index]={...p[index],name,items:ids,keywords};
+  }else{
+    p.unshift({id:Date.now(),name,image:null,items:ids,keywords});
+  }
+
+  try{save('presets',p)}catch{return toast('저장 공간이 부족합니다')}
+
+  activePresetKeyword='전체';
+  editingPresetId=null;
+  closeModal('builderModal');
+  refreshAll();
+
+  if(isEditing){
+    toast('프리셋을 수정했습니다');
+    pushNotification('프리셋 수정 완료',`${name} 프리셋이 업데이트됐어요.`,'✎');
+  }else{
+    toast('프리셋을 저장했습니다');
+    pushNotification('프리셋 저장 완료',`${name} 프리셋이 저장됐어요.`,'✦');
+  }
+}
+function openPreset(i){
+  let p=load('presets')[i];
+  if(!p)return;
+
+  openPresetIndex=i;
+
+  const items=getPresetClothes(p);
+  const keywords=normalizePresetKeywords(p);
+
+  $('presetTitle').textContent=p.name||'저장된 프리셋';
+  $('presetMetaLine').textContent=`${items.length}개의 아이템으로 구성된 코디`;
+
+  $('presetKeywordList').innerHTML=keywords.length
+    ? keywords.map(k=>`<span class="preset-overview-keyword">#${esc(k)}</span>`).join('')
+    : `<span class="preset-overview-keyword">키워드 없음</span>`;
+
+  $('presetItems').innerHTML=items.length
+    ? items.map(c=>presetDetailClothCard(c)).join('')
+    : `<div class="empty" style="grid-column:1/-1">이 프리셋에 표시할 아이템이 없어요.</div>`;
+
+  $('presetModal').classList.add('active');
+}
+function deleteOpenPreset(){if(openPresetIndex===null)return;if(!confirm('이 프리셋을 삭제할까요?'))return;let p=load('presets');p.splice(openPresetIndex,1);save('presets',p);openPresetIndex=null;closeModal('presetModal');refreshAll();toast('프리셋을 삭제했습니다')}
 function renderHome(){const c=load('clothes').slice(0,5);$('recentClothes').innerHTML=c.length?c.map(x=>clothCard(x)).join(''):`<div class="empty" style="width:100%">옷을 등록해보세요.</div>`;let p=load('presets').slice(0,4);$('homePresets').innerHTML=p.length?p.map((x,i)=>{let items=getPresetClothes(x);return `<article class="preset-card" onclick="go('preset')"><div class="preset-collage">${collage(items)}</div><div class="preset-name">${esc(x.name)}</div><div class="preset-meta">${items.length}개의 아이템</div></article>`}).join(''):`<div class="empty" style="grid-column:1/-1">프리셋을 만들면 여기에 보여요.</div>`}
 function wearRandomPreset(){let p=load('presets');if(!p.length){go('preset');return toast('먼저 프리셋을 만들어주세요')}openPreset(Math.floor(Math.random()*p.length))}
 function initMobileHomeHero(){
@@ -1884,9 +2695,252 @@ function initMobileHomeHero(){
   });
 }
 
-function renderFeed(){let p=load('presets'),profile=load('profile',{}),name=profile.name||'anywear_user';if(!p.length){$('feed').innerHTML='<div class="empty">공유할 프리셋이 아직 없어요.</div>';return}$('feed').innerHTML=p.slice(0,6).map(x=>{let items=getPresetClothes(x);return `<article class="feed-card"><div class="feed-user"><img class="avatar" src="${profile.image||DEFAULT_PROFILE_IMAGE}"><div><b>${esc(name)}</b><div style="font-size:11px;color:#777">나의 프리셋</div></div></div><div class="feed-collage">${collage(items)}</div><div class="feed-body"><div class="feed-actions"><button onclick="this.textContent=this.textContent.includes('♡')?'♥ 좋아요':'♡ 좋아요'">♡ 좋아요</button><button onclick="shareText('${esc(x.name)}')">⌯ 공유</button></div><div class="feed-title">${esc(x.name)}</div><div class="feed-copy">내 옷으로 만든 ANYWEAR 스타일</div></div></article>`}).join('')}
-async function shareText(name){const text=`ANYWEAR - ${name}`;try{if(navigator.share)await navigator.share({title:'ANYWEAR',text});else{await navigator.clipboard.writeText(text);toast('공유 문구를 복사했습니다')}}catch{}}
-function shareCurrent(){let p=load('presets');if(!p.length)return toast('공유할 프리셋이 없어요');shareText(p[0].name)}
+function renderFeed(){
+  let p=load('presets'),profile=load('profile',{}),name=profile.name||'anywear_user';
+  if(!p.length){$('feed').innerHTML='<div class="empty">공유할 프리셋이 아직 없어요.</div>';return}
+  $('feed').innerHTML=p.slice(0,6).map(x=>{
+    let items=getPresetClothes(x);
+    return `<article class="feed-card"><div class="feed-user"><img class="avatar" src="${profile.image||DEFAULT_PROFILE_IMAGE}"><div><b>${esc(name)}</b><div style="font-size:11px;color:#777">나의 프리셋</div></div></div><div class="feed-collage">${collage(items)}</div><div class="feed-body"><div class="feed-actions"><button onclick="this.textContent=this.textContent.includes('♡')?'♥ 좋아요':'♡ 좋아요'">♡ 좋아요</button><button onclick="sharePresetById('${x.id}')">⌯ 링크 공유</button></div><div class="feed-title">${esc(x.name)}</div><div class="feed-copy">내 옷으로 만든 ANYWEAR 스타일</div></div></article>`
+  }).join('')
+}
+function safeExternalUrl(value=''){
+  try{
+    const u=new URL(String(value),location.href);
+    return /^https?:$/.test(u.protocol)?u.href:'';
+  }catch{return ''}
+}
+function safeSharedImage(value=''){
+  const v=String(value||'');
+  if(/^data:image\/(jpeg|jpg|png|webp);base64,/i.test(v))return v;
+  return safeExternalUrl(v);
+}
+function utf8ToBase64Url(str){
+  const bytes=new TextEncoder().encode(str);
+  let binary='';
+  const chunk=0x8000;
+  for(let i=0;i<bytes.length;i+=chunk){
+    binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));
+  }
+  return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function base64UrlToUtf8(value){
+  let s=String(value||'').replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length%4)s+='=';
+  const binary=atob(s);
+  const bytes=new Uint8Array(binary.length);
+  for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function loadImageForShare(src){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>resolve(img);
+    img.onerror=reject;
+    img.src=src;
+  });
+}
+async function makeShareThumbnail(src,maxSide=112,quality=.52){
+  const value=String(src||'');
+  if(!value)return '';
+  if(/^https?:\/\//i.test(value))return value;
+  if(!/^data:image\//i.test(value)&&!/^blob:/i.test(value))return '';
+  try{
+    const img=await loadImageForShare(value);
+    const scale=Math.min(1,maxSide/Math.max(img.naturalWidth||img.width,img.naturalHeight||img.height));
+    const w=Math.max(1,Math.round((img.naturalWidth||img.width)*scale));
+    const h=Math.max(1,Math.round((img.naturalHeight||img.height)*scale));
+    const canvas=document.createElement('canvas');
+    canvas.width=w;canvas.height=h;
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#f7f7f7';
+    ctx.fillRect(0,0,w,h);
+    ctx.drawImage(img,0,0,w,h);
+    return canvas.toDataURL('image/jpeg',quality);
+  }catch{return ''}
+}
+async function buildPresetSharePayload(preset){
+  const profile=load('profile',{});
+  const items=getPresetClothes(preset);
+  const sharedItems=[];
+
+  for(const item of items){
+    sharedItems.push({
+      name:item.name||'',
+      category:item.category||'',
+      brand:item.brand||'',
+      size:item.size||'',
+      detailSize:item.detailSize||'',
+      link:safeExternalUrl(item.link||''),
+      memo:item.memo||'',
+      image:await makeShareThumbnail(item.image||'',112,.5)
+    });
+  }
+
+  return {
+    v:1,
+    author:{
+      name:profile.name||'anywear_user',
+      feature:profile.feature||'',
+      image:await makeShareThumbnail(profile.image||DEFAULT_PROFILE_IMAGE,72,.5)
+    },
+    preset:{
+      name:preset.name||'ANYWEAR LOOK',
+      keywords:normalizePresetKeywords(preset)
+    },
+    items:sharedItems,
+    createdAt:Date.now()
+  };
+}
+function makePresetShareUrl(payload){
+  const base=location.href.split('#')[0];
+  let data=payload;
+  let encoded=utf8ToBase64Url(JSON.stringify(data));
+  let url=`${base}#aw-preset=${encoded}`;
+
+  /* 공유 앱/브라우저에서 URL이 지나치게 길어지는 경우에는
+     코디 정보와 상품 링크를 유지하고 썸네일만 제외합니다. */
+  if(url.length>48000){
+    data={...payload,author:{...payload.author,image:''},items:payload.items.map(x=>({...x,image:''}))};
+    encoded=utf8ToBase64Url(JSON.stringify(data));
+    url=`${base}#aw-preset=${encoded}`;
+  }
+  return url;
+}
+async function copyShareUrl(url){
+  try{
+    await navigator.clipboard.writeText(url);
+  }catch{
+    const ta=document.createElement('textarea');
+    ta.value=url;
+    ta.style.position='fixed';
+    ta.style.opacity='0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+  }
+}
+async function sharePresetByIndex(index){
+  const presets=load('presets');
+  const preset=presets[index];
+  if(!preset)return toast('공유할 프리셋을 찾지 못했습니다');
+
+  toast('공유 링크를 만드는 중입니다');
+  const payload=await buildPresetSharePayload(preset);
+  const url=makePresetShareUrl(payload);
+  const title=`${payload.author.name}의 ${payload.preset.name}`;
+  const text=`ANYWEAR · ${payload.preset.name}\n${payload.items.length}개의 코디 아이템`;
+
+  try{
+    if(navigator.share && location.protocol!=='file:'){
+      await navigator.share({title,text,url});
+    }else{
+      await copyShareUrl(url);
+      if(location.protocol==='file:'){
+        toast('링크를 복사했습니다 · 배포된 웹에서 공유하면 다른 사람도 열 수 있어요');
+      }else{
+        toast('프리셋 공유 링크를 복사했습니다');
+      }
+    }
+  }catch(err){
+    if(err?.name!=='AbortError'){
+      try{await copyShareUrl(url);toast('프리셋 공유 링크를 복사했습니다')}catch{}
+    }
+  }
+}
+function sharePresetById(id){
+  const presets=load('presets');
+  const index=presets.findIndex(x=>String(x.id)===String(id));
+  if(index<0)return toast('공유할 프리셋을 찾지 못했습니다');
+  sharePresetByIndex(index);
+}
+function shareOpenPreset(){
+  if(openPresetIndex===null)return toast('공유할 프리셋을 선택해주세요');
+  sharePresetByIndex(openPresetIndex);
+}
+function shareCurrent(){
+  let p=load('presets');
+  if(!p.length)return toast('공유할 프리셋이 없어요');
+  sharePresetByIndex(0);
+}
+function sharedCollageHTML(items=[]){
+  const arr=items.slice(0,4);
+  if(!arr.length)return `<div class="empty" style="grid-column:1/-1;padding:28px">코디 아이템 정보가 없습니다.</div>`;
+  return arr.map(item=>{
+    const src=safeSharedImage(item.image||'');
+    return `<div class="shared-collage-cell">${src?`<img src="${esc(src)}" alt="${esc(item.name||'코디 아이템')}">`:`<span class="shared-no-image">NO IMAGE</span>`}</div>`;
+  }).join('');
+}
+function renderSharedPresetPayload(data){
+  if(!data||!data.preset||!Array.isArray(data.items))return false;
+  const author=data.author||{};
+  const preset=data.preset||{};
+  const items=data.items||[];
+  const avatar=safeSharedImage(author.image||'')||DEFAULT_PROFILE_IMAGE;
+  const keywords=Array.isArray(preset.keywords)?preset.keywords:[];
+
+  $('sharedPresetContent').innerHTML=`
+    <div class="shared-preset-author">
+      <img src="${esc(avatar)}" alt="프로필 이미지">
+      <div><b>${esc(author.name||'anywear_user')}</b><span>${esc(author.feature||'ANYWEAR에서 공유한 코디')}</span></div>
+    </div>
+    <div class="shared-preset-collage">${sharedCollageHTML(items)}</div>
+    <div class="shared-preset-heading">${esc(preset.name||'ANYWEAR LOOK')}</div>
+    <div class="shared-preset-count">${items.length}개의 아이템</div>
+    ${keywords.length?`<div class="shared-preset-keywords">${keywords.map(k=>`<span class="shared-preset-keyword">#${esc(k)}</span>`).join('')}</div>`:''}
+    <h3 class="shared-items-title">코디 정보</h3>
+    <div class="shared-item-list">
+      ${items.map(item=>{
+        const src=safeSharedImage(item.image||'');
+        const link=safeExternalUrl(item.link||'');
+        const meta=[item.category,item.brand,item.size].filter(Boolean).map(esc).join(' · ');
+        const detail=[item.detailSize,item.memo].filter(Boolean).map(esc).join(' · ');
+        return `<div class="shared-item">
+          <div class="shared-item-media">${src?`<img src="${esc(src)}" alt="${esc(item.name||'아이템')}">`:'<span>NO IMAGE</span>'}</div>
+          <div><div class="shared-item-name">${esc(item.name||'이름 없는 아이템')}</div>${meta?`<div class="shared-item-meta">${meta}</div>`:''}${detail?`<div class="shared-item-detail">${detail}</div>`:''}</div>
+          ${link?`<a class="shared-item-link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">상품 보기</a>`:''}
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="shared-preset-footer">
+      <button class="primary" onclick="shareSharedPresetAgain()">이 코디 공유</button>
+      <button class="secondary" onclick="closeSharedPreset()">ANYWEAR 보기</button>
+    </div>
+    <p class="share-link-hint">이 링크에는 코디 이름, 아이템 정보와 상품 링크가 포함되어 있어요.</p>`;
+
+  $('sharedPresetModal').classList.add('active');
+  return true;
+}
+function openSharedPresetFromLocation(){
+  const prefix='#aw-preset=';
+  if(!location.hash.startsWith(prefix))return false;
+  try{
+    const payload=JSON.parse(base64UrlToUtf8(location.hash.slice(prefix.length)));
+    activeSharedPresetUrl=location.href;
+    return renderSharedPresetPayload(payload);
+  }catch{
+    toast('공유된 프리셋 링크를 읽지 못했습니다');
+    return false;
+  }
+}
+async function shareSharedPresetAgain(){
+  const url=activeSharedPresetUrl||location.href;
+  try{
+    if(navigator.share && location.protocol!=='file:'){
+      await navigator.share({title:'ANYWEAR 코디',text:'ANYWEAR에서 공유된 코디를 확인해보세요.',url});
+    }else{
+      await copyShareUrl(url);
+      toast('공유 링크를 복사했습니다');
+    }
+  }catch(err){if(err?.name!=='AbortError')toast('공유하지 못했습니다')}
+}
+function closeSharedPreset(){
+  closeModal('sharedPresetModal');
+  if(location.hash.startsWith('#aw-preset=')){
+    history.replaceState(null,'',location.href.split('#')[0]);
+  }
+  activeSharedPresetUrl='';
+}
 $('profileImage').addEventListener('change',async e=>{if(!e.target.files[0])return;$('profilePreview').src=await compressFile(e.target.files[0],700,.8)});
 function removeProfilePhoto(){
   const preview=$('profilePreview');
@@ -1901,7 +2955,8 @@ function saveProfile(){const previewSrc=$('profilePreview').src||'';let p={name:
 function renderProfile(){let p=load('profile',{}),c=load('clothes'),pr=load('presets');$('profileAvatar').src=p.image||DEFAULT_PROFILE_IMAGE;$('profileName').textContent=p.name||'anywear_user';$('profileBio').textContent=p.feature||'오늘도, 새로운 조합을 찾아서.';$('statClothes').textContent=c.length;$('statPresets').textContent=pr.length;let keywords=Array.isArray(p.keywords)?p.keywords:['미니멀','블랙','스트릿','편안함'];$('profileKeywords').innerHTML=keywords.length?keywords.map(k=>`<span class="keyword">#${esc(k)}</span>`).join(''):'<span style="font-size:12px;color:#999">프로필 편집에서 스타일 키워드를 추가해보세요.</span>';$('profileClothes').innerHTML=c.slice(0,12).map(x=>clothCard(x)).join('')}
 function refreshAll(){renderClothes();renderPresets();renderHome();renderProfile();renderDesktopChrome();if(current==='share')renderFeed()}
 function migrate(){let p=load('profile',{});if(p.image&&p.image==='')delete p.image;save('profile',p)}
-window.addEventListener('load',()=>{migrate();const d=new Date();$('today').textContent=`${d.getMonth()+1}월 ${d.getDate()}일 · 내 옷장에서 고른 스타일`;buildNav();refreshAll();renderDesktopChrome();renderNotifications();initMobileHomeHero()});
+window.addEventListener('load',()=>{migrate();const d=new Date();$('today').textContent=`${d.getMonth()+1}월 ${d.getDate()}일 · 내 옷장에서 고른 스타일`;buildNav();refreshAll();renderDesktopChrome();renderNotifications();initMobileHomeHero();openSharedPresetFromLocation()});
+window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#aw-preset='))openSharedPresetFromLocation()});
 </script>
 </body>
 </html>
